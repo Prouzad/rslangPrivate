@@ -1,7 +1,7 @@
 const TextBookPage = () => {
 	return (
 		<>
-     Text Book Page 
+			Text Book Page
 		</>
 	)
 };
