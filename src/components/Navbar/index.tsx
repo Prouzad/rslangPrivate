@@ -12,13 +12,13 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { Link } from 'react-router-dom';
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Sign in'];
 
 const Navbar = () => {
 	const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-		null
+		null 
 	);
 	const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
 		null
@@ -43,7 +43,6 @@ const Navbar = () => {
 		<AppBar position='static'>
 			<Container maxWidth='xl'>
 				<Toolbar disableGutters>
-					<AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
 					<Typography
 						variant='h6'
 						noWrap
@@ -59,7 +58,7 @@ const Navbar = () => {
 							textDecoration: 'none',
 						}}
 					>
-						LOGO
+						RSLang
 					</Typography>
 
 					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -91,11 +90,9 @@ const Navbar = () => {
 								display: { xs: 'block', md: 'none' },
 							}}
 						>
-							{pages.map((page) => (
-								<MenuItem key={page} onClick={handleCloseNavMenu}>
-									<Typography textAlign='center'>{page}</Typography>
+							<MenuItem onClick={handleCloseNavMenu}>
+									<Typography textAlign='center'>Abdulla</Typography>
 								</MenuItem>
-							))}
 						</Menu>
 					</Box>
 					<AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -115,18 +112,41 @@ const Navbar = () => {
 							textDecoration: 'none',
 						}}
 					>
-						LOGO
+						RSLang
 					</Typography>
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-						{pages.map((page) => (
+					<Link to="/main">
 							<Button
-								key={page}
 								onClick={handleCloseNavMenu}
 								sx={{ my: 2, color: 'white', display: 'block' }}
 							>
-								{page}
+								Main
 							</Button>
-						))}
+							</Link>
+							<Link to="/textbook">
+							<Button
+								onClick={handleCloseNavMenu}
+								sx={{ my: 2, color: 'white', display: 'block' }}
+							>
+								Textbook
+							</Button>
+							</Link>
+							<Link to="/minigame">
+							<Button
+								onClick={handleCloseNavMenu}
+								sx={{ my: 2, color: 'white', display: 'block' }}
+							>
+								Minigames
+							</Button>
+							</Link>
+							<Link to="/statistics">
+							<Button
+								onClick={handleCloseNavMenu}
+								sx={{ my: 2, color: 'white', display: 'block' }}
+							>
+								Statistics
+							</Button>
+							</Link>
 					</Box>
 
 					<Box sx={{ flexGrow: 0 }}>

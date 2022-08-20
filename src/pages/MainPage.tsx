@@ -1,7 +1,9 @@
-import Navbar from '../components/Navbar';
-
 const MainPage = () => {
-	return <Navbar />;
+	return (
+		<>
+			Main
+		</>
+	)
 };
 
 export default MainPage;
