@@ -91,8 +91,17 @@ const Navbar = () => {
 							}}
 						>
 							<MenuItem onClick={handleCloseNavMenu}>
-									<Typography textAlign='center'>Abdulla</Typography>
-								</MenuItem>
+								<Link to="/main">Main</Link>
+							</MenuItem>
+							<MenuItem onClick={handleCloseNavMenu}>
+								<Link to="/textbook">Textbook</Link>
+							</MenuItem>
+							<MenuItem onClick={handleCloseNavMenu}>
+								<Link to="/minigame">Minigame</Link>
+							</MenuItem>
+							<MenuItem onClick={handleCloseNavMenu}>
+								<Link to="/statistics">Statistics</Link>
+							</MenuItem>								
 						</Menu>
 					</Box>
 					<AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
