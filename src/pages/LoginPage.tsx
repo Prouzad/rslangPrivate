@@ -1,10 +1,9 @@
-
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import SignUp from '../components/Authorization/SignUp/index'
-
+import LogIn from '../components/Authorization/LogIn/index'
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -36,7 +35,7 @@ const LoginPage = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-           <SignUp/>
+           <LogIn/>
         </Box>
       </Modal>
     </div>
