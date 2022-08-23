@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom';
 import LoginPage from './../Authorization/LoginPage';
+import SignUpPage from '../Authorization/SignUpPage';
 
 const settings = ['Sign in'];
 
@@ -190,6 +191,7 @@ const Navbar = () => {
 					</Box>
 				</Toolbar>
 				<LoginPage/>
+				<SignUpPage/>
 			</Container>
 		</AppBar>
 	);
