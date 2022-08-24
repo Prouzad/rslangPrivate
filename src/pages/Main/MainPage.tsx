@@ -5,6 +5,7 @@ import DictionaryImg from '../../assets/icon/dictionary.png';
 import GameImg from '../../assets/icon/game.jpg';
 import StatisticsImg from '../../assets/icon/statistics.png';
 import AvatarImg from '../../assets/icon/avatar.png';
+import RsLogo from '../../assets/icon/rs_school_js.svg';
 import ReactPlayer from 'react-player'
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
@@ -137,7 +138,29 @@ const MainPage = () => {
 				</Link>
 			</div>
 			</div>
-
+		<footer>
+			<div className="footerContainer">
+				<div className="logoRs">
+					<Link to='https://rs.school/js/'>
+						<img src={RsLogo} alt="" />
+					</Link>
+				</div>
+				<div className="yearApp">
+					2022
+				</div>
+				<div className="githubLinks">
+					<Link to='/'>
+						<img src={AvatarImg} alt="github"/>
+					</Link>
+					<Link to='/'>
+						<img src={AvatarImg} alt="github"/>
+					</Link>
+					<Link to='/'>
+						<img src={AvatarImg} alt="github"/>
+					</Link>
+				</div>
+			</div>
+		</footer>
 		</div>
 	)
 };
