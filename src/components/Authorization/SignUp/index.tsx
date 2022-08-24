@@ -10,7 +10,7 @@ import {
   Link,
 } from "@mui/material";
 import { useRef, useState, useEffect } from "react";
-import { createUser } from "../../../api/index";
+import axios from "../../../api/axios";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGEX = /^[0-9a-zA-Z!@#$%^&*]{8,}$/;
@@ -62,15 +62,34 @@ const SignUp = () => {
       setErrMsg("Invalid Entry");
       return;
     }
+
     try {
-      const response = await createUser({
-        name: user,
-        email: mail,
-        password: pwd,
-      });
+     const response = await axios.post(
+        "/users",
+        JSON.stringify({
+          name: user,
+          email: mail,
+          password: pwd,
+        }),
+        {
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(response.data);
       setSuccessMsg(true);
-    } catch (err) {
-      setErrMsg(`User with this e-mail exists`);
+    } catch (err: any) {
+      if (!err?.response) {
+        setErrMsg(`No server Response`);
+      } else if (err.response?.status === 417) {
+        console.log(err.response?.status);
+        setErrMsg(`User with this e-mail exists`);
+      } else {
+        console.log(err.response?.status);
+        setErrMsg(`Registration failed`);
+      }
     }
   };
 
