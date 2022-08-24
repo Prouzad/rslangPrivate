@@ -7,6 +7,7 @@ import StatisticsImg from '../../assets/icon/statistics.png';
 import AvatarImg from '../../assets/icon/avatar.png';
 import ReactPlayer from 'react-player'
 import { Link } from 'react-router-dom';
+import Button from '@mui/material/Button';
 
 
 
@@ -23,6 +24,9 @@ const MainPage = () => {
 						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus iste sequi amet vitae cumque. Voluptatibus optio fuga ratione dicta est iure. Quisquam sit culpa commodi quas accusantium eius voluptates aperiam?
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, neque non excepturi tempora eos illum facere velit reprehenderit a labore! Eum tempora nobis voluptate expedita fugiat sint iusto voluptatibus vitae!
 					</div>
+					<Link to='/' style={{textDecoration: 'none'}}>
+						<Button variant="outlined">Start</Button>
+					</Link>
 				</div>
 				<div className="mainImg">
 					<img src={mainImage} />
