@@ -95,36 +95,42 @@ const MainPage = () => {
 			</div>
 			<div className="teamBox">
 				<h2>Our Team</h2>
-				<div className="CardBox">
-					<div className="avatar">
-						<img src={AvatarImg} alt="Avatar" />
+				<Link to='/' className='advantagesLink'>
+					<div className="CardBox">
+						<div className="avatar">
+							<img src={AvatarImg} alt="Avatar" />
+						</div>
+						<div className="about">
+							<div className="name">Prouzad</div>
+							<div className="titlePerson">Frontend developer</div>
+							<div className="descPerson">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate, aliquid odio asperiores assumenda velit quisquam maxime illo? In porro tenetur maiores ducimus fugit obcaecati dolore ex, iusto neque et!</div>
+						</div>
 					</div>
-					<div className="about">
-						<div className="name">Prouzad</div>
-						<div className="titlePerson">Frontend developer</div>
-						<div className="descPerson">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate, aliquid odio asperiores assumenda velit quisquam maxime illo? In porro tenetur maiores ducimus fugit obcaecati dolore ex, iusto neque et!</div>
+				</Link>
+				<Link to='/' className='advantagesLink'>
+					<div className="CardBox">
+						<div className="avatar">
+							<img src={AvatarImg} alt="Avatar" />
+						</div>
+						<div className="about">
+							<div className="name">Prouzad</div>
+							<div className="titlePerson">Frontend developer</div>
+							<div className="descPerson">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate, aliquid odio asperiores assumenda velit quisquam maxime illo? In porro tenetur maiores ducimus fugit obcaecati dolore ex, iusto neque et!</div>
+						</div>
 					</div>
-				</div>
-				<div className="CardBox">
-					<div className="avatar">
-						<img src={AvatarImg} alt="Avatar" />
+				</Link>
+				<Link to='/' className='advantagesLink'>
+					<div className="CardBox">
+						<div className="avatar">
+							<img src={AvatarImg} alt="Avatar" />
+						</div>
+						<div className="about">
+							<div className="name">Prouzad</div>
+							<div className="titlePerson">Frontend developer</div>
+							<div className="descPerson">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate, aliquid odio asperiores assumenda velit quisquam maxime illo? In porro tenetur maiores ducimus fugit obcaecati dolore ex, iusto neque et!</div>
+						</div>
 					</div>
-					<div className="about">
-						<div className="name">Prouzad</div>
-						<div className="titlePerson">Frontend developer</div>
-						<div className="descPerson">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate, aliquid odio asperiores assumenda velit quisquam maxime illo? In porro tenetur maiores ducimus fugit obcaecati dolore ex, iusto neque et!</div>
-					</div>
-				</div>
-				<div className="CardBox">
-					<div className="avatar">
-						<img src={AvatarImg} alt="Avatar" />
-					</div>
-					<div className="about">
-						<div className="name">Prouzad</div>
-						<div className="titlePerson">Frontend developer</div>
-						<div className="descPerson">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate, aliquid odio asperiores assumenda velit quisquam maxime illo? In porro tenetur maiores ducimus fugit obcaecati dolore ex, iusto neque et!</div>
-					</div>
-				</div>
+				</Link>
 			</div>
 			</div>
 
