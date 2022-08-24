@@ -124,7 +124,7 @@ const Navbar = () => {
 						RSLang
 					</Typography>
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-					<Link to="/main">
+					<Link to="/">
 							<Button
 								onClick={handleCloseNavMenu}
 								sx={{ my: 2, color: 'white', display: 'block' }}
