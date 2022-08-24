@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import MiniDrawer from './components/Navbar/indexx';
+import MiniDrawer from './components/Navbar';
 import MainPage from './pages/Main/MainPage';
 import MiniGamesPage from './pages/MiniGamesPage';
 import StatisticsPage from './pages/StatisticsPage';

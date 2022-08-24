@@ -6,6 +6,7 @@ import GameImg from '../../assets/icon/game.jpg';
 import StatisticsImg from '../../assets/icon/statistics.png';
 import AvatarImg from '../../assets/icon/avatar.png';
 import ReactPlayer from 'react-player'
+import { Link } from 'react-router-dom';
 
 
 
@@ -30,52 +31,59 @@ const MainPage = () => {
 				<div className="titleAdvantages">
 					<h2>Advantages</h2>
 				</div>
-
 				<div className='advantagesBox'>
-					<div className='advantages'>
-						<div className="advantageLogo">
-							<img src={TextBookImg} alt="textbook"/>
+					<Link to='/textbook' className='advantagesLink'>
+						<div className='advantages'>
+							<div className="advantageLogo">
+								<img src={TextBookImg} alt="textbook"/>
+							</div>
+							<div className="advantageTitle">
+								<h2>Textbook</h2>
+							</div>
+							<div className="advantageDesc">
+								Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam fuga sapiente culpa! Aliquid eveniet soluta vitae, consectetur nesciunt, excepturi placeat, aut corrupti molestiae reiciendis harum praesentium? Sit perferendis debitis animi!
+							</div>
 						</div>
-						<div className="advantageTitle">
-							<h2>Textbook</h2>
+					</Link>
+					<Link to='/'  className='advantagesLink'>
+						<div className='advantages'>
+							<div className="advantageLogo">
+								<img src={DictionaryImg} alt="Dictionary"/>
+							</div>
+							<div className="advantageTitle">
+								<h2>Dictionary</h2>
+							</div>
+							<div className="advantageDesc">
+								Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam fuga sapiente culpa! Aliquid eveniet soluta vitae, consectetur nesciunt, excepturi placeat, aut corrupti molestiae reiciendis harum praesentium? Sit perferendis debitis animi!
+							</div>
 						</div>
-						<div className="advantageDesc">
-							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam fuga sapiente culpa! Aliquid eveniet soluta vitae, consectetur nesciunt, excepturi placeat, aut corrupti molestiae reiciendis harum praesentium? Sit perferendis debitis animi!
+					</Link>
+					<Link to='/minigames'  className='advantagesLink'>
+						<div className='advantages'>
+							<div className="advantageLogo">
+								<img src={GameImg} alt="games"/>
+							</div>
+							<div className="advantageTitle">
+								<h2>Mini Games</h2>
+							</div>
+							<div className="advantageDesc">
+								Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam fuga sapiente culpa! Aliquid eveniet soluta vitae, consectetur nesciunt, excepturi placeat, aut corrupti molestiae reiciendis harum praesentium? Sit perferendis debitis animi!
+							</div>
 						</div>
-					</div>
-					<div className='advantages'>
-						<div className="advantageLogo">
-							<img src={DictionaryImg} alt="Dictionary"/>
+					</Link>
+					<Link to='statistics'  className='advantagesLink'> 
+						<div className='advantages'>
+							<div className="advantageLogo">
+								<img src={StatisticsImg} alt="Statistics"/>
+							</div>
+							<div className="advantageTitle">
+								<h2>Statistics</h2>
+							</div>
+							<div className="advantageDesc">
+								Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam fuga sapiente culpa! Aliquid eveniet soluta vitae, consectetur nesciunt, excepturi placeat, aut corrupti molestiae reiciendis harum praesentium? Sit perferendis debitis animi!
+							</div>
 						</div>
-						<div className="advantageTitle">
-							<h2>Dictionary</h2>
-						</div>
-						<div className="advantageDesc">
-							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam fuga sapiente culpa! Aliquid eveniet soluta vitae, consectetur nesciunt, excepturi placeat, aut corrupti molestiae reiciendis harum praesentium? Sit perferendis debitis animi!
-						</div>
-					</div>
-					<div className='advantages'>
-						<div className="advantageLogo">
-							<img src={GameImg} alt="games"/>
-						</div>
-						<div className="advantageTitle">
-							<h2>Mini Games</h2>
-						</div>
-						<div className="advantageDesc">
-							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam fuga sapiente culpa! Aliquid eveniet soluta vitae, consectetur nesciunt, excepturi placeat, aut corrupti molestiae reiciendis harum praesentium? Sit perferendis debitis animi!
-						</div>
-					</div>
-					<div className='advantages'>
-						<div className="advantageLogo">
-							<img src={StatisticsImg} alt="Statistics"/>
-						</div>
-						<div className="advantageTitle">
-							<h2>Statistics</h2>
-						</div>
-						<div className="advantageDesc">
-							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam fuga sapiente culpa! Aliquid eveniet soluta vitae, consectetur nesciunt, excepturi placeat, aut corrupti molestiae reiciendis harum praesentium? Sit perferendis debitis animi!
-						</div>
-					</div>
+					</Link>
 			</div>
 			<div className="videoBox">
 				<h2>All posibilities</h2>
@@ -84,7 +92,6 @@ const MainPage = () => {
 					url='https://www.youtube.com/watch?v=waAlgFq9Xq8' 
 					width='100%'
 					 />
-				
 			</div>
 			<div className="teamBox">
 				<h2>Our Team</h2>
