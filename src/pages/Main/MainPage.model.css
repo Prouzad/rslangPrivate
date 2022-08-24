@@ -165,7 +165,7 @@ footer{
 }
 
 .footerContainer{
-	width: 90%;
+	width: 100%;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
