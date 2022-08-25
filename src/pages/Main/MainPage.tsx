@@ -5,10 +5,23 @@ import DictionaryImg from '../../assets/icon/dictionary.png';
 import GameImg from '../../assets/icon/game.jpg';
 import StatisticsImg from '../../assets/icon/statistics.png';
 import AvatarImg from '../../assets/icon/avatar.png';
-import RsLogo from '../../assets/icon/rs_school_js.svg';
 import ReactPlayer from 'react-player'
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
+import Footer from '../footer/footer';
+
+const advantagesArr = [
+	{title: 'Textbook', descripction: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam fuga sapiente culpa! Aliquid eveniet soluta vitae, consectetur nesciunt, excepturi placeat, aut corrupti molestiae reiciendis harum praesentium? Sit perferendis debitis animi!', img: TextBookImg},
+	{title: 'Dictionary', descripction: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam fuga sapiente culpa! Aliquid eveniet soluta vitae, consectetur nesciunt, excepturi placeat, aut corrupti molestiae reiciendis harum praesentium? Sit perferendis debitis animi!', img: DictionaryImg},
+	{title: 'Mini games', descripction: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam fuga sapiente culpa! Aliquid eveniet soluta vitae, consectetur nesciunt, excepturi placeat, aut corrupti molestiae reiciendis harum praesentium? Sit perferendis debitis animi!', img: GameImg},
+	{title: 'Statistics', descripction: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam fuga sapiente culpa! Aliquid eveniet soluta vitae, consectetur nesciunt, excepturi placeat, aut corrupti molestiae reiciendis harum praesentium? Sit perferendis debitis animi!', img: StatisticsImg}
+]
+
+const teamInfo = [
+	{name: 'Prouzad', descripction: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate, aliquid odio asperiores assumenda velit quisquam maxime illo? In porro tenetur maiores ducimus fugit obcaecati dolore ex, iusto neque et!', title: 'Frontend developer', link: '/', image: AvatarImg},
+	{name: 'Prouzad', descripction: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate, aliquid odio asperiores assumenda velit quisquam maxime illo? In porro tenetur maiores ducimus fugit obcaecati dolore ex, iusto neque et!', title: 'Frontend developer', link: '/', image: AvatarImg},
+	{name: 'Prouzad', descripction: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate, aliquid odio asperiores assumenda velit quisquam maxime illo? In porro tenetur maiores ducimus fugit obcaecati dolore ex, iusto neque et!', title: 'Frontend developer', link: '/', image: AvatarImg}	
+]
 
 
 
@@ -30,65 +43,28 @@ const MainPage = () => {
 					</Link>
 				</div>
 				<div className="mainImg">
-					<img src={mainImage} />
+					<img src={mainImage} alt='Main' />
 				</div>	
 				</div>
 				<div className="titleAdvantages">
 					<h2>Advantages</h2>
 				</div>
 				<div className='advantagesBox'>
-					<Link to='/textbook' className='advantagesLink'>
+					{advantagesArr.map((item) => (
+						<Link to={'/'+item.title.toLowerCase()} className='advantagesLink'>
 						<div className='advantages'>
 							<div className="advantageLogo">
-								<img src={TextBookImg} alt="textbook"/>
+								<img src={item.img} alt="textbook"/>
 							</div>
 							<div className="advantageTitle">
-								<h2>Textbook</h2>
+								<h2>{item.title}</h2>
 							</div>
 							<div className="advantageDesc">
-								Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam fuga sapiente culpa! Aliquid eveniet soluta vitae, consectetur nesciunt, excepturi placeat, aut corrupti molestiae reiciendis harum praesentium? Sit perferendis debitis animi!
+								{item.descripction}
 							</div>
 						</div>
 					</Link>
-					<Link to='/'  className='advantagesLink'>
-						<div className='advantages'>
-							<div className="advantageLogo">
-								<img src={DictionaryImg} alt="Dictionary"/>
-							</div>
-							<div className="advantageTitle">
-								<h2>Dictionary</h2>
-							</div>
-							<div className="advantageDesc">
-								Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam fuga sapiente culpa! Aliquid eveniet soluta vitae, consectetur nesciunt, excepturi placeat, aut corrupti molestiae reiciendis harum praesentium? Sit perferendis debitis animi!
-							</div>
-						</div>
-					</Link>
-					<Link to='/minigames'  className='advantagesLink'>
-						<div className='advantages'>
-							<div className="advantageLogo">
-								<img src={GameImg} alt="games"/>
-							</div>
-							<div className="advantageTitle">
-								<h2>Mini Games</h2>
-							</div>
-							<div className="advantageDesc">
-								Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam fuga sapiente culpa! Aliquid eveniet soluta vitae, consectetur nesciunt, excepturi placeat, aut corrupti molestiae reiciendis harum praesentium? Sit perferendis debitis animi!
-							</div>
-						</div>
-					</Link>
-					<Link to='statistics'  className='advantagesLink'> 
-						<div className='advantages'>
-							<div className="advantageLogo">
-								<img src={StatisticsImg} alt="Statistics"/>
-							</div>
-							<div className="advantageTitle">
-								<h2>Statistics</h2>
-							</div>
-							<div className="advantageDesc">
-								Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam fuga sapiente culpa! Aliquid eveniet soluta vitae, consectetur nesciunt, excepturi placeat, aut corrupti molestiae reiciendis harum praesentium? Sit perferendis debitis animi!
-							</div>
-						</div>
-					</Link>
+					))}
 			</div>
 			<div className="videoBox">
 				<h2>All posibilities</h2>
@@ -100,67 +76,23 @@ const MainPage = () => {
 			</div>
 			<div className="teamBox">
 				<h2>Our Team</h2>
-				<Link to='/' className='advantagesLink'>
+				{teamInfo.map(item => (
+					<Link to={item.link} className='advantagesLink'>
 					<div className="CardBox">
 						<div className="avatar">
-							<img src={AvatarImg} alt="Avatar" />
+							<img src={item.image} alt="Avatar" />
 						</div>
 						<div className="about">
-							<div className="name">Prouzad</div>
-							<div className="titlePerson">Frontend developer</div>
-							<div className="descPerson">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate, aliquid odio asperiores assumenda velit quisquam maxime illo? In porro tenetur maiores ducimus fugit obcaecati dolore ex, iusto neque et!</div>
+							<div className="name">{item.name}</div>
+							<div className="titlePerson">{item.title}</div>
+							<div className="descPerson">{item.descripction}</div>
 						</div>
 					</div>
 				</Link>
-				<Link to='/' className='advantagesLink'>
-					<div className="CardBox">
-						<div className="avatar">
-							<img src={AvatarImg} alt="Avatar" />
-						</div>
-						<div className="about">
-							<div className="name">Prouzad</div>
-							<div className="titlePerson">Frontend developer</div>
-							<div className="descPerson">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate, aliquid odio asperiores assumenda velit quisquam maxime illo? In porro tenetur maiores ducimus fugit obcaecati dolore ex, iusto neque et!</div>
-						</div>
-					</div>
-				</Link>
-				<Link to='/' className='advantagesLink'>
-					<div className="CardBox">
-						<div className="avatar">
-							<img src={AvatarImg} alt="Avatar" />
-						</div>
-						<div className="about">
-							<div className="name">Prouzad</div>
-							<div className="titlePerson">Frontend developer</div>
-							<div className="descPerson">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate, aliquid odio asperiores assumenda velit quisquam maxime illo? In porro tenetur maiores ducimus fugit obcaecati dolore ex, iusto neque et!</div>
-						</div>
-					</div>
-				</Link>
-			</div>
-			</div>
-		<footer className='footer'>
-			<div className="footerContainer">
-				<div className="logoRs">
-					<Link to='https://rs.school/js/'>
-						<img src={RsLogo} alt="" />
-					</Link>
-				</div>
-				<div className="githubLinks">
-					<Link to='/'>
-						<img src={AvatarImg} alt="github"/>
-					</Link>
-					<Link to='/'>
-						<img src={AvatarImg} alt="github"/>
-					</Link>
-					<Link to='/'>
-						<img src={AvatarImg} alt="github"/>
-					</Link>
-				</div>
-				<div className="yearApp">
-					2022
+				))}
 				</div>
 			</div>
-		</footer>
+			<Footer />
 		</div>
 	)
 };
