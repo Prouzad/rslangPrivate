@@ -71,12 +71,6 @@ const SignUp = () => {
           email: mail,
           password: pwd,
         }),
-        {
-          headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json",
-          },
-        }
       );
       console.log(response.data);
       setSuccessMsg(true);
