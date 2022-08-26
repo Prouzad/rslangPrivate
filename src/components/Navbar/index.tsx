@@ -14,13 +14,12 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom';
 import LoginPage from './../Authorization/LoginPage';
-import SignUpPage from '../Authorization/SignUpPage';
 
 const settings = ['Sign in'];
 
 const Navbar = () => {
 	const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-		null 
+		null
 	);
 	const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
 		null
@@ -103,7 +102,7 @@ const Navbar = () => {
 							</MenuItem>
 							<MenuItem onClick={handleCloseNavMenu}>
 								<Link to="/statistics">Statistics</Link>
-							</MenuItem>								
+							</MenuItem>
 						</Menu>
 					</Box>
 					<AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -126,46 +125,45 @@ const Navbar = () => {
 						RSLang
 					</Typography>
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-					<Link to="/main">
+						<Link to="/main">
 							<Button
 								onClick={handleCloseNavMenu}
 								sx={{ my: 2, color: 'white', display: 'block' }}
 							>
 								Main
 							</Button>
-							</Link>
-							<Link to="/textbook">
+						</Link>
+						<Link to="/textbook">
 							<Button
 								onClick={handleCloseNavMenu}
 								sx={{ my: 2, color: 'white', display: 'block' }}
 							>
 								Textbook
 							</Button>
-							</Link>
-							<Link to="/minigame">
+						</Link>
+						<Link to="/minigame">
 							<Button
 								onClick={handleCloseNavMenu}
 								sx={{ my: 2, color: 'white', display: 'block' }}
 							>
 								Minigames
 							</Button>
-							</Link>
-							<Link to="/statistics">
+						</Link>
+						<Link to="/statistics">
 							<Button
 								onClick={handleCloseNavMenu}
 								sx={{ my: 2, color: 'white', display: 'block' }}
 							>
 								Statistics
 							</Button>
-							</Link>
+						</Link>
 					</Box>
 
 					<Box sx={{ flexGrow: 0 }}>
 						<Button sx={{ my: 2, color: 'white', display: 'block' }}> Login</Button>
 					</Box>
 				</Toolbar>
-				<LoginPage/>
-				<SignUpPage/>
+				<LoginPage />
 			</Container>
 		</AppBar>
 	);

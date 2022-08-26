@@ -8,11 +8,13 @@ import {
   Link,
 } from "@mui/material";
 import { useRef, useState, useEffect } from "react";
-import { loginUser } from "../../../api/index";
 import { useLocalStorage } from '../../../hooks/useLocalStorage'
 import axios from "../../../api/axios";
+import SignUp from "../SignUp";
+import Modal from '@mui/material/Modal';
+import { authStyle } from "../AuthStyle";
 
-const LogIn = () => {
+const LogIn = (props:any) => {
   const errRef = useRef();
 
   const [mail, setMail] = useState("");
@@ -20,15 +22,19 @@ const LogIn = () => {
   const [errMsg, setErrMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState(false);
   const [userData, setUserData] = useLocalStorage([], 'userData')
+  const [openSignUp, setOpenSignUp] = useState(false);
+  const handleOpenSignUp = () => setOpenSignUp(true);
+  const handleCloseSignUp = () => setOpenSignUp(false);
 
-  useEffect(()=>{
+
+  useEffect(() => {
     setErrMsg('')
   }, [mail, pwd])
 
-  const handleSubmit = async (e:any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      const response = await  axios.post(
+      const response = await axios.post(
         "/signin",
         JSON.stringify({
           email: mail,
@@ -44,10 +50,10 @@ const LogIn = () => {
       } else if (err.response?.status === 404) {
         console.log(err.response?.status);
         setErrMsg(`Couldn't find a user with email: ${mail}`);
-      }  else if (err.response?.status === 403) {
+      } else if (err.response?.status === 403) {
         console.log(err.response?.status);
         setErrMsg(`Wrong password`);
-      } 
+      }
       else {
         console.log(err.response?.status);
         setErrMsg(`Registration failed`);
@@ -55,54 +61,18 @@ const LogIn = () => {
     }
   };
 
-return (
-  <>
-    {" "}
-    {successMsg ? (
-      <Box
-        display="flex"
-        flexDirection={"column"}
-        maxWidth="400"
-        minHeight={"300px"}
-        alignItems="center"
-        justifyContent={"center"}
-      >
-        <Typography
-          variant="h2"
-          sx={{
-            fontSize: "25px",
-            fontWeight: "400",
-          }}
-        >
-          Добро пожаловать!
-        </Typography>
-        <Link
-          sx={{
-            margin: "0 5px",
-          }}
-          href="#"
-          underline="hover"
-        >
-          Начать обучение
-        </Link>
-      </Box>
-    ) : (
-      <form onSubmit={handleSubmit}>
+  return (
+    <>
+      {" "}
+      {successMsg ? (
         <Box
           display="flex"
           flexDirection={"column"}
           maxWidth="400"
+          minHeight={"300px"}
           alignItems="center"
+          justifyContent={"center"}
         >
-          {errMsg && (
-            <Box ref={errRef}>
-              <Alert severity="error">
-                <AlertTitle>Error</AlertTitle>
-                <strong>{errMsg}</strong>
-              </Alert>
-            </Box>
-          )}
-
           <Typography
             variant="h2"
             sx={{
@@ -110,53 +80,92 @@ return (
               fontWeight: "400",
             }}
           >
-            Войти
+            Добро пожаловать!
           </Typography>
-
-          <TextField
-            required
-            name="email"
-            id="email-input"
-            label="Ваш email"
-            type="text"
-            margin="normal"
-            autoComplete="off"
-            onChange={(e) => setMail(e.target.value)}
-            value={mail}
-          />
-
-          <TextField
-            required
-            name="password"
-            id="outlined-password-input"
-            label="Пароль"
-            type="password"
-            autoComplete="off"
-            margin="normal"
-            onChange={(e) => setPwd(e.target.value)}
-          />
-
-          <Button variant="contained" sx={{ margin: "10px 0" }} type="submit">
-            LogIn
-          </Button>
-
-          <Typography>
-            Нет аккаунта?
-            <Link
-              sx={{
-                margin: "0 5px",
-              }}
-              href="#"
-              underline="hover"
-            >
-              Регистрация
-            </Link>
-          </Typography>
+          <Link
+            sx={{
+              margin: "0 5px",
+            }}
+            href="#"
+            underline="hover"
+          >
+            Начать обучение
+          </Link>
         </Box>
-      </form>
-    )}
-  </>
-);
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <Box
+            display="flex"
+            flexDirection={"column"}
+            maxWidth="400"
+            alignItems="center"
+          >
+            {errMsg && (
+              <Box ref={errRef}>
+                <Alert severity="error">
+                  <AlertTitle>Error</AlertTitle>
+                  <strong>{errMsg}</strong>
+                </Alert>
+              </Box>
+            )}
+
+            <Typography
+              variant="h2"
+              sx={{
+                fontSize: "25px",
+                fontWeight: "400",
+              }}
+            >
+              Войти
+            </Typography>
+
+            <TextField
+              required
+              name="email"
+              id="email-input"
+              label="Ваш email"
+              type="text"
+              margin="normal"
+              autoComplete="off"
+              onChange={(e) => setMail(e.target.value)}
+              value={mail}
+            />
+
+            <TextField
+              required
+              name="password"
+              id="outlined-password-input"
+              label="Пароль"
+              type="password"
+              autoComplete="off"
+              margin="normal"
+              onChange={(e) => setPwd(e.target.value)}
+            />
+
+            <Button variant="contained" sx={{ margin: "10px 0" }} type="submit">
+              LogIn
+            </Button>
+
+            <Button
+              onClick={handleOpenSignUp}>
+              Нет аккаунта?
+              Регистрация
+            </Button>
+          </Box>
+        </form>
+      )}
+      {openSignUp ? <Modal
+        open={openSignUp}
+        onClose={handleCloseSignUp}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={authStyle}>
+          <SignUp handleCloseSignUp={handleCloseSignUp} />
+        </Box>
+      </Modal> : null}
+    </>
+  );
 
 };
 

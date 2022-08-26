@@ -8,16 +8,19 @@ import {
   Alert,
   AlertTitle,
   Link,
+  Modal,
 } from "@mui/material";
 import { useRef, useState, useEffect } from "react";
 import axios from "../../../api/axios";
+import { authStyle } from "../AuthStyle";
+import LogIn from "../LogIn";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGEX = /^[0-9a-zA-Z!@#$%^&*]{8,}$/;
 const MAIL_REGEX =
   /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/;
 
-const SignUp = () => {
+const SignUp = (props: any) => {
   const [user, setUser] = useState("");
   const [validName, setValidName] = useState(false);
 
@@ -29,6 +32,10 @@ const SignUp = () => {
 
   const [errMsg, setErrMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState(false);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
 
   const errRef = useRef();
   const userRef = useRef();
@@ -64,7 +71,7 @@ const SignUp = () => {
     }
 
     try {
-     const response = await axios.post(
+      const response = await axios.post(
         "/users",
         JSON.stringify({
           name: user,
@@ -209,21 +216,28 @@ const SignUp = () => {
               SignUp
             </Button>
 
-            <Typography>
+            <Button onClick={() => {
+              handleOpen()
+              props.handleCloseSignUp()
+            }}>
               Есть аккаунт?
-              <Link
-                sx={{
-                  margin: "0 5px",
-                }}
-                href="#"
-                underline="hover"
-              >
-                Войти
-              </Link>
-            </Typography>
+              Войти
+            </Button>
           </Box>
         </form>
       )}
+      {
+        open ? <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={authStyle}>
+            <LogIn />
+          </Box>
+        </Modal> : null
+      }
     </>
   );
 };

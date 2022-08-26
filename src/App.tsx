@@ -1,4 +1,4 @@
-import { Route, Routes, useRoutes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import MainPage from './pages/MainPage';
 import MiniGamesPage from './pages/MiniGamesPage';
