@@ -3,12 +3,10 @@
     top: '50%',
     left: '50%',
     width: 'min(400px, 60vw)',
-  
-    transform: 'translate(-50%, -50%)',
+    transform: 'translate(-50%, -200px)',
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
-    p: 4,
+    p: 2,
     borderRadius: 5,
-  
   };

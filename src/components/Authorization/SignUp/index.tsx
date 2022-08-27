@@ -7,20 +7,16 @@ import {
   Button,
   Alert,
   AlertTitle,
-  Link,
-  Modal,
 } from "@mui/material";
 import { useRef, useState, useEffect } from "react";
 import axios from "../../../api/axios";
-import { authStyle } from "../AuthStyle";
-import LogIn from "../LogIn";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGEX = /^[0-9a-zA-Z!@#$%^&*]{8,}$/;
 const MAIL_REGEX =
   /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/;
 
-const SignUp = (props: any) => {
+const SignUp = () => {
   const [user, setUser] = useState("");
   const [validName, setValidName] = useState(false);
 
@@ -32,9 +28,6 @@ const SignUp = (props: any) => {
 
   const [errMsg, setErrMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState(false);
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
 
   const errRef = useRef();
@@ -114,16 +107,6 @@ const SignUp = (props: any) => {
           >
             Регистрация завершена!
           </Typography>
-
-          <Link
-            sx={{
-              margin: "0 5px",
-            }}
-            href="#"
-            underline="hover"
-          >
-            Войти
-          </Link>
         </Box>
       ) : (
         <form onSubmit={handleSubmit}>
@@ -141,7 +124,6 @@ const SignUp = (props: any) => {
                 </Alert>
               </Box>
             )}
-
 
             <TextField
               required

@@ -5,27 +5,18 @@ import {
   Button,
   Alert,
   AlertTitle,
-  Link,
 } from "@mui/material";
 import { useRef, useState, useEffect } from "react";
 import { useLocalStorage } from '../../../hooks/useLocalStorage'
 import axios from "../../../api/axios";
-import SignUp from "../SignUp";
-import Modal from '@mui/material/Modal';
-import { authStyle } from "../AuthStyle";
 
-const LogIn = (props:any) => {
+const LogIn = () => {
   const errRef = useRef();
-
   const [mail, setMail] = useState("");
   const [pwd, setPwd] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState(false);
   const [userData, setUserData] = useLocalStorage([], 'userData')
-  const [openSignUp, setOpenSignUp] = useState(false);
-  const handleOpenSignUp = () => setOpenSignUp(true);
-  const handleCloseSignUp = () => setOpenSignUp(false);
-
 
   useEffect(() => {
     setErrMsg('')
@@ -76,21 +67,13 @@ const LogIn = (props:any) => {
           <Typography
             variant="h2"
             sx={{
+              textAlign:"center",
               fontSize: "25px",
               fontWeight: "400",
             }}
           >
             Добро пожаловать!
           </Typography>
-          <Link
-            sx={{
-              margin: "0 5px",
-            }}
-            href="#"
-            underline="hover"
-          >
-            Начать обучение
-          </Link>
         </Box>
       ) : (
         <form onSubmit={handleSubmit}>

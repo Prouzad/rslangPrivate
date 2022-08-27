@@ -48,9 +48,9 @@ export default function LoginTabPanel() {
   };
 
   return (
-    <Box sx={[{ width: '100%', height: 500}, authStyle]}>
+    <Box sx={[{ width: '100%'}, authStyle]}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider'}}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+        <Tabs value={value} onChange={handleChange} centered aria-label="basic tabs example">
           <Tab label="LogIn" {...a11yProps(0)} />
           <Tab label="SighUp" {...a11yProps(1)} />
         </Tabs>
