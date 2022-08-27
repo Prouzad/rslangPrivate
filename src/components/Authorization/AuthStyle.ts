@@ -2,7 +2,7 @@
     position: 'absolute' as 'absolute',
     top: '50%',
     left: '50%',
-    width: 'min(300px, 60vw)',
+    width: 'min(400px, 60vw)',
   
     transform: 'translate(-50%, -50%)',
     bgcolor: 'background.paper',

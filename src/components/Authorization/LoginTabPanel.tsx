@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import LogIn from './LogIn/index';
 import SignUp from './SignUp/index';
+import { authStyle } from './AuthStyle';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -47,18 +48,18 @@ export default function LoginTabPanel() {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+    <Box sx={[{ width: '100%', height: 500}, authStyle]}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider'}}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="LogIn" {...a11yProps(0)} />
           <Tab label="SighUp" {...a11yProps(1)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-      <LogIn />
+        <LogIn />
       </TabPanel>
       <TabPanel value={value} index={1}>
-      <SignUp />
+        <SignUp />
       </TabPanel>
     </Box>
   );
