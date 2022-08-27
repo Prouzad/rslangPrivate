@@ -7,7 +7,7 @@ import StatisticsImg from '../../assets/icon/statistics.png';
 import AvatarImg from '../../assets/icon/avatar.png';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
-import Footer from '../Footer';
+import Footer from '../footer/index';
 
 const advantagesArr = [
 	{
