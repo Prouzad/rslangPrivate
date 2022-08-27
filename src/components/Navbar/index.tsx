@@ -108,7 +108,7 @@ export default function MiniDrawer(props: any) {
 
 	return (
 		<>
-			{showSignIn && <LoginPage />}
+			<LoginPage show={showSignIn} handleClose={setShowSignIn} />
 			<Box sx={{ display: 'flex', overflow: 'hidden' }}>
 				<CssBaseline />
 				<Drawer variant='permanent' open={open}>
