@@ -142,15 +142,6 @@ const SignUp = (props: any) => {
               </Box>
             )}
 
-            <Typography
-              variant="h2"
-              sx={{
-                fontSize: "25px",
-                fontWeight: "400",
-              }}
-            >
-              Регистрация
-            </Typography>
 
             <TextField
               required
@@ -216,28 +207,10 @@ const SignUp = (props: any) => {
               SignUp
             </Button>
 
-            <Button onClick={() => {
-              handleOpen()
-              props.handleCloseSignUp()
-            }}>
-              Есть аккаунт?
-              Войти
-            </Button>
           </Box>
         </form>
       )}
-      {
-        open ? <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={authStyle}>
-            <LogIn />
-          </Box>
-        </Modal> : null
-      }
+      
     </>
   );
 };

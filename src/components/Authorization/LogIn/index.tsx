@@ -109,16 +109,6 @@ const LogIn = (props:any) => {
               </Box>
             )}
 
-            <Typography
-              variant="h2"
-              sx={{
-                fontSize: "25px",
-                fontWeight: "400",
-              }}
-            >
-              Войти
-            </Typography>
-
             <TextField
               required
               name="email"
@@ -145,25 +135,9 @@ const LogIn = (props:any) => {
             <Button variant="contained" sx={{ margin: "10px 0" }} type="submit">
               LogIn
             </Button>
-
-            <Button
-              onClick={handleOpenSignUp}>
-              Нет аккаунта?
-              Регистрация
-            </Button>
           </Box>
         </form>
       )}
-      {openSignUp ? <Modal
-        open={openSignUp}
-        onClose={handleCloseSignUp}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={authStyle}>
-          <SignUp handleCloseSignUp={handleCloseSignUp} />
-        </Box>
-      </Modal> : null}
     </>
   );
 

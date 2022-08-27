@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import LogIn from './LogIn/index';
 import { authStyle } from './AuthStyle';
+import LoginTabPanel from './LoginTabPanel';
 
 interface IProps {
 	show: boolean;
@@ -18,7 +19,13 @@ const LoginPage = (props: IProps) => {
 			aria-describedby='modal-modal-description'
 		>
 			<Box sx={authStyle}>
-				<LogIn />
+
+
+
+			<LoginTabPanel/>
+
+				
+				{/* <LogIn /> */}
 			</Box>
 		</Modal>
 	);
