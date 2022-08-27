@@ -222,7 +222,6 @@ footer{
 		max-width: 200px;
 	}
 	
-	
 	.advantages{
 		width: 260px;
 		padding: 15px;
@@ -236,7 +235,6 @@ footer{
 		justify-content: space-evenly;
 		flex-wrap: wrap;
 		box-shadow: 5 20px 10px rgba(0,0,0,0.4);
-	
 	}
 	
 	.advantageLogo img{
