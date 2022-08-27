@@ -76,7 +76,7 @@ const Drawer = styled(MuiDrawer, {
 	}),
 }));
 
-export default function MiniDrawer(props: any) {
+export default function Navbar(props: any) {
 	const theme = useTheme();
 	const [open, setOpen] = React.useState(false);
 	const [showSignIn, setShowSignIn] = React.useState(false);
