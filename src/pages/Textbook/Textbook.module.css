@@ -1,0 +1,15 @@
+.contentBook {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  width: 90%;
+  margin: 5%;
+}
+
+.bookPage {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 20px;
+  column-gap: 20px;
+}

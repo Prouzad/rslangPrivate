@@ -20,6 +20,8 @@ import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import LoginIcon from '@mui/icons-material/Login';
 import LoginPage from '../Authorization/LoginPage';
+import { IProps } from '../../interfaces';
+import { Typography } from '@mui/material';
 
 const drawerWidth = 240;
 
@@ -76,7 +78,7 @@ const Drawer = styled(MuiDrawer, {
 	}),
 }));
 
-export default function Navbar(props: any) {
+export default function Navbar({ userData }: IProps) {
 	const theme = useTheme();
 	const [open, setOpen] = React.useState(false);
 	const [showSignIn, setShowSignIn] = React.useState(false);
@@ -137,7 +139,7 @@ export default function Navbar(props: any) {
 							</DrawerHeader>
 							<Divider />
 							<List>
-								{['Main', 'Textbook', 'Minigames', 'Statistics'].map(
+								{['Main', 'Textbook', 'Minigames', 'Statistics', 'Dictionary'].map(
 									(text, index) => (
 										<Link to={text.toLowerCase()}>
 											<ListItem
