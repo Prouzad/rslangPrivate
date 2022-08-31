@@ -1,13 +1,16 @@
-import { Button, Card, CardContent, Typography } from '@mui/material';
+import { Box, Button, Card, CardContent, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import s from './Games.module.css'
+import sprintGame from '../../assets/icon/sprintGame.svg';
+import audioGame from '../../assets/icon/audioGame.svg';
 
 function Games() {
   let navigate = useNavigate();
   return (
     <div className={s.contentGames}>
-      <Card sx={{ width: 270, maxHeight: 400 }}>
-        <CardContent>
+      <Card   sx={{ maxWidth: 350 }} className={s.card} >
+        <CardContent className={s.cardContent}>
+          <Box sx={{ maxWidth: 90 }}> <img src={sprintGame} alt='sprint' /></Box>
           <Typography gutterBottom variant="h5" component="div">
             Sprint
           </Typography>
@@ -23,8 +26,9 @@ function Games() {
           </Button>
         </CardContent>
       </Card>
-      <Card sx={{ width: 270, maxHeight: 400 }}>
-        <CardContent>
+      <Card className={s.card} sx={{ maxWidth: 350}}>
+        <CardContent className={s.cardContent}>
+        <Box sx={{ maxWidth: 90 }}> <img src={audioGame} alt='audio' /></Box>
           <Typography gutterBottom variant="h5" component="div">
             AudioCall
           </Typography>
