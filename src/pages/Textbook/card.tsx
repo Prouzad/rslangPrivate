@@ -23,7 +23,10 @@ const CardWord = ({ card, user, group }: Props) => {
 
 
   return (
-    <Card sx={{ maxWidth: 350 }}>
+    <Card sx={{
+			maxWidth: "280px",
+			gap: "75px"
+		 }}>
       <CardMedia component="img" alt="XX" height="180" image={imgSrc} />
       <CardContent>
         <Box sx={{ display: "flex", flexDirection: "row", columnGap: "6px" }}>

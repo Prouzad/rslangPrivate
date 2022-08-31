@@ -188,6 +188,7 @@ footer{
 
 .githubLinks img{
 	height: 100%;
+	margin-right: 45px;
 }
 
 @media (max-width: 800px) {
