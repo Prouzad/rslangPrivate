@@ -22,9 +22,9 @@ const Start = (props: PageSettingsProps) => {
   };
 
   return (
-    <div className={s.contentGames}>
+    <div className={s.cardSprintWrapper}>
+      <div className={`${s.card} ' '  ${s.cardSprint}`}>
       <h2 >Sprint</h2>
-      <div>
         <Box sx={{ width: 200 }}>
           <FormControl fullWidth variant='standard'>
             <InputLabel>Select the Level</InputLabel>
