@@ -39,18 +39,19 @@ export const getLocalStorage = () => {
   }
 };
 
-export const TextbookWords = {
-  async getWords(activePage: number, groupNum: number) {
-    const params = {
-      group: groupNum.toString(),
-      page: activePage.toString(),
-    };
-    const queryParams = new URLSearchParams(params).toString();
-    return fetch(`${baseURL}words?${queryParams}`).then((response) => {
-      return response.json();
-    });
-  },
-};
+
+export async function getWords(activePage: number, groupNum: number) {
+  return await axios.get(
+    `${baseURL}words?group=${groupNum}&page=${activePage}`,
+    {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    }
+  );
+}
 
 export async function setWordToDictionary(
   userId: string,
@@ -90,7 +91,7 @@ export async function deleteWordFromDictionary(
     .then(response => { return response })
 }
 
-export async function getUserWords(userId: string | undefined, token: string | undefined, activePage: number, groupNum: number) {
+export async function getUserWords(userId: string | undefined, token: string | undefined) {
   return axios.get(`${baseURL}users/${userId}/words/`, {
     method: 'GET',
     headers: {
@@ -98,9 +99,37 @@ export async function getUserWords(userId: string | undefined, token: string | u
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     },
-    params: {
-      group: groupNum.toString(),
-      page: activePage.toString(),
-    },
   }).then(response => { return response })
+}
+
+export async function getWord(userId: string, wordId: string, token: string) {
+  const response = axios.get(`${baseURL}users/${userId}/words/${wordId}`, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    })
+  return await response;
+}
+
+export async function changeWord(
+  userId: string,
+  wordId: string,
+  wordInfo: IWordType,
+  token: string
+) {
+  const response = axios.put(
+    `${baseURL}users/${userId}/words/${wordId}`,
+    wordInfo,
+    {
+      headers: {
+        Accept: 'application/json',
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    }
+  );
+  return await response;
 }

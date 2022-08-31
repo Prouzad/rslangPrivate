@@ -5,6 +5,8 @@ import Navbar from './components/Navbar';
 import { IUserInfo } from './interfaces';
 import Dictionary from './pages/Dictionary';
 import Games from './pages/Games';
+import AudioCall from './pages/Games/AudioCall';
+import Sprint from './pages/Games/Sprint';
 import MainPage from './pages/Main/MainPage';
 import Statistics from './pages/Statistics';
 import Textbook from './pages/Textbook';
@@ -28,9 +30,11 @@ const App = () => {
 				<Route path='/' element={<MainPage />} />
 				<Route path='/main' element={<MainPage />} />
 				<Route path='/textbook' element={<Textbook userData={userData} />} />
-				<Route path='/game' element={<Games />} />
+				<Route path='/games' element={<Games />} />
 				<Route path='/statistics' element={<Statistics />} />
 				<Route path="/dictionary" element={<Dictionary userData={userData} />} />
+				<Route path="/sprint" element={<Sprint userData={userData} />} />
+				<Route path="/audio-call" element={<AudioCall />} />
 			</Routes>
 		</>
 	);

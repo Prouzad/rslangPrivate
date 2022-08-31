@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import s from "./Dictionary.module.css";
 import { IProps, IUserWord, IWordCard } from "../../interfaces";
 import CardWord from "./word";
-import { getUserWords, TextbookWords } from "../../api";
+import { getUserWords, getWords } from "../../api";
 
 
 const Dictionary = ({ userData }: IProps) => {
@@ -27,11 +27,11 @@ const Dictionary = ({ userData }: IProps) => {
 
   useEffect(() => {
     async function fetchAllWords() {
-      const wordsArr = await TextbookWords.getWords(page - 1, group);
-      setAllWords(wordsArr);
+      const wordsArr = await getWords(page - 1, group);
+      setAllWords(wordsArr.data);
     }
     async function fetchUserWords() {
-      const wordsArr = await getUserWords(userData?.userId, userData?.token, page - 1, group);
+      const wordsArr = await getUserWords(userData?.userId, userData?.token);
       setWords(wordsArr.data);
     }
     if (userData?.token) {
