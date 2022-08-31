@@ -21,7 +21,7 @@ export interface IUserWord {
   id: string;
   difficulty: string;
   wordId: string;
-  optional?: {
+  optional: {
     game?: {
       sprint?: string;
       audioCall?: string;
@@ -67,3 +67,7 @@ export interface IUserInfo {
 export interface IProps {
   userData?: IUserInfo;
 } 
+
+export type PageSettingsProps = {
+  onStart: (difficulty: string, isStart: boolean) => void;
+};

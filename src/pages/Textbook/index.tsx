@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import s from "./Textbook.module.css";
 import { IProps, IWordCard } from "../../interfaces";
 import CardWord from "./card";
-import { TextbookWords } from "../../api";
+import { getWords } from "../../api";
 
 const Textbook = ({ userData }: IProps) => {
   const [group, setGroup] = useState(0);
@@ -24,8 +24,8 @@ const Textbook = ({ userData }: IProps) => {
 
   useEffect(() => {
     async function fetchWords() {
-      const wordsArr = await TextbookWords.getWords(page - 1, group);
-      setWords(wordsArr);
+      const wordsArr = await getWords(page - 1, group);
+      setWords(wordsArr.data);
     }
     fetchWords();
   }, [page, group]);
