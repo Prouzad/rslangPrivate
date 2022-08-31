@@ -21,7 +21,6 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import LoginIcon from '@mui/icons-material/Login';
 import LoginPage from '../Authorization/LoginPage';
 import { IProps } from '../../interfaces';
-import { Typography } from '@mui/material';
 
 const drawerWidth = 240;
 
@@ -99,7 +98,7 @@ export default function Navbar({ userData }: IProps) {
 				return <MenuBookIcon style={{ color: 'white' }} />;
 			case 'Dictionary':
 				return <BookIcon style={{ color: 'white' }} />;
-			case 'Minigames':
+			case 'Games':
 				return <SportsEsportsIcon style={{ color: 'white' }} />;
 			case 'Statistics':
 				return <BarChartIcon style={{ color: 'white' }} />;
@@ -139,7 +138,7 @@ export default function Navbar({ userData }: IProps) {
 							</DrawerHeader>
 							<Divider />
 							<List>
-								{['Main', 'Textbook', 'Minigames', 'Statistics', 'Dictionary'].map(
+								{['Main', 'Textbook', 'Games', 'Statistics', 'Dictionary'].map(
 									(text, index) => (
 										<Link to={text.toLowerCase()}>
 											<ListItem

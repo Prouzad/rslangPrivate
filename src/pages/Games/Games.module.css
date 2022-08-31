@@ -1,0 +1,9 @@
+.contentGames {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    column-gap: 7%;
+    width: 100%;
+    padding-top: 10%;
+}
