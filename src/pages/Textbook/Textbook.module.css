@@ -8,11 +8,21 @@
 }
 
 .bookPage {
-  width: 80%;
+  width: 85%;
   display: flex;
   flex-wrap: wrap;
-  row-gap: 20px;
-  column-gap: 20px;
+  row-gap: 25px;
+  column-gap: 25px;
 	margin: auto;
 }
 
+.cardBox{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	box-shadow: 5px 10px 10px rgba(0,0,0,0.4);
+	max-width: 300px;
+	padding: 15px;
+	border-radius: 15px;
+	background: #35639a;
+}

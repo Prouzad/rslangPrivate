@@ -3,11 +3,13 @@ import { Box } from "@mui/system";
 import { IUserInfo, IWordCard } from "../../interfaces";
 import VolumeDownIcon from "@mui/icons-material/VolumeDown";
 import { baseURL, setWordToDictionary } from "../../api";
+import s from "./Textbook.module.css";
 interface Props {
   card: IWordCard;
   user?: IUserInfo;
   group?: string;
 }
+
 const CardWord = ({ card, user, group }: Props) => {
   const imgSrc = `${baseURL}${card.image}`;
   const audioSrc = `${baseURL}${card.audio}`;
@@ -23,12 +25,9 @@ const CardWord = ({ card, user, group }: Props) => {
 
 
   return (
-    <Card sx={{
-			maxWidth: "280px",
-			gap: "75px"
-		 }}>
-      <CardMedia component="img" alt="XX" height="180" image={imgSrc} />
+    <Card raised={true} className={s.cardBox} >
       <CardContent>
+      <CardMedia component="img" alt="XX" height="180" image={imgSrc} sx={{marginBottom: 5,}} />
         <Box sx={{ display: "flex", flexDirection: "row", columnGap: "6px" }}>
           <Typography gutterBottom variant="h5" component="div">
             {card.word}
@@ -37,7 +36,7 @@ const CardWord = ({ card, user, group }: Props) => {
             {card.transcription}
           </Typography>
           <VolumeDownIcon
-            sx={{ height: 20, width: 20 }}
+            sx={{ height: 20, width: 20, cursor: 'pointer' }}
             onClick={() => start(audioSrc)}
           />
         </Box>
@@ -52,7 +51,7 @@ const CardWord = ({ card, user, group }: Props) => {
             color="text.secondary"
           >{card.textMeaning}</Typography>
           <VolumeDownIcon
-            sx={{ height: 20, width: 20 }}
+            sx={{ height: 20, width: 20, cursor: 'pointer' }}
             onClick={() => start(audioMeanSrc)}
           />
         </Box>
@@ -68,7 +67,7 @@ const CardWord = ({ card, user, group }: Props) => {
             color="text.secondary"
           >{card.textExample}</Typography>
           <VolumeDownIcon
-            sx={{ height: 20, width: 20 }}
+            sx={{ height: 20, width: 20, cursor: 'pointer' }}
             onClick={() => start(audioExampleSrc)}
           />
         </Box>
@@ -77,7 +76,9 @@ const CardWord = ({ card, user, group }: Props) => {
           variant="body2"
           color="text.secondary"
         >{card.textExampleTranslate}</Typography>
-        {user ?
+       
+      </CardContent>
+			{user ?
           <Button
             variant="contained"
             sx={{ marginTop: 2 }}
@@ -93,7 +94,6 @@ const CardWord = ({ card, user, group }: Props) => {
           </Button>
           : null
         }
-      </CardContent>
     </Card>
   );
 };
