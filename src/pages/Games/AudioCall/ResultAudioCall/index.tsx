@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import { List, ListSubheader, Stack } from '@mui/material';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
-import s from '../../Games.module.css'
 import { IPageResultProps, IUserWord, IWordCard } from '../../../../interfaces';
 import { baseURL } from '../../../../api';
 
-const Result = (props: IPageResultProps) => {
+const ResultAudioCall = (props: IPageResultProps) => {
   const [userWordsList, setUserWordsList] = useState<IUserWord[]>([]);
   const [difficulty, setDifficulty] = useState('1');
   const [dataWords, setDataWords] = useState<IWordCard[] | null>(null);
@@ -32,16 +31,15 @@ const Result = (props: IPageResultProps) => {
   let wordWrongInfo: Array<IWordCard[]> = [];
 
   const currentDifficultyRightAnswers = userWordsList.filter((item) => item.difficulty === difficulty
-    && (String(item?.optional.game?.sprint) === 'true'));
+    && (String(item.optional.game?.audioCall) === 'true'));
   const currentDifficultyWrongAnswers = userWordsList.filter((item) => item.difficulty === difficulty
-    && (String(item?.optional.game?.sprint) === 'false'));
+    && (String(item.optional.game?.audioCall) === 'false'));
   currentDifficultyRightAnswers.map((item) => wordRightInfo.push((dataWords as IWordCard[])
     .filter((i) => String(i.id) === item.wordId)))
   currentDifficultyWrongAnswers.map((item) => wordWrongInfo.push((dataWords as IWordCard[])
     .filter((i) => String(i.id) === item.wordId)))
 
   return (
-    <div className={s.contentGames}>
       <List
         sx={{
           width: '100%',
@@ -50,6 +48,7 @@ const Result = (props: IPageResultProps) => {
           overflow: 'auto',
           maxHeight: 500,
           padding: '20px',
+          '& ul': { padding: 0 },
         }}
       >
         <h2>{currentDifficultyRightAnswers.length > 10
@@ -62,8 +61,7 @@ const Result = (props: IPageResultProps) => {
                 <VolumeUpIcon data-id={item.id} onClick={startAudio} />
                 {<ListSubheader>{`${item.word} - ${item.wordTranslate}`}</ListSubheader>}
               </Stack>
-            </div>
-          )
+            </div>)
         })}
         <h5>wrong: {wordWrongInfo.length}</h5>
         {wordWrongInfo.flat().map((item, index) => {
@@ -73,13 +71,10 @@ const Result = (props: IPageResultProps) => {
                 <VolumeUpIcon data-id={item.id} onClick={startAudio} />
                 {<ListSubheader>{`${item.word} - ${item.wordTranslate}`}</ListSubheader>}
               </Stack>
-            </div>
-          )
+            </div>)
         })}
       </List>
-    </div >
-
   );
 };
 
-export default Result;
+export default ResultAudioCall;
