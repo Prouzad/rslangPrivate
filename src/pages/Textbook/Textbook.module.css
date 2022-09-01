@@ -4,7 +4,8 @@
 	align-items: center;
   row-gap: 12px;
   width: 100%;
-	margin: auto
+	margin: auto;
+	margin-bottom: 55px;
 }
 
 .bookPage {
@@ -17,12 +18,41 @@
 }
 
 .cardBox{
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	box-shadow: 5px 10px 10px rgba(0,0,0,0.4);
-	max-width: 300px;
-	padding: 15px;
-	border-radius: 15px;
-	background: #35639a;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 5px 10px 10px rgba(0,0,0,0.4);
+  max-width: 300px;
+  padding-bottom: 20px;
+  border-radius: 15px !important;
+  background: #fdfeff !important;
+}
+
+.sprintBtn{
+  width: 200px;
+  height: 55px;
+  background: #ededed;
+  color: black;
+  margin-left: 55px;
+  transition: transform 0.5s;
+}
+
+.sprintBtn:hover{
+  background: orange;
+  transform: scale(1.1);
+}
+
+.audioCallBtn{
+  width: 200px;
+  height: 55px;
+  background: #ededed;
+  color: black;
+  margin-left: 55px;
+  transition: transform 0.5s;
+}
+
+.audioCallBtn:hover{
+  background: rgb(0, 253, 181);
+  transform: scale(1.1);
 }
