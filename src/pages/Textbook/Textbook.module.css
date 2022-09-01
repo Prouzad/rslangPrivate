@@ -32,27 +32,31 @@
 .sprintBtn{
   width: 200px;
   height: 55px;
-  background: #ededed;
-  color: black;
-  margin-left: 55px;
-  transition: transform 0.5s;
+  background: #ededed !important;
+  color: black !important;
+  margin-left: 55px !important;
+  transition: transform 0.5s !important;
 }
 
 .sprintBtn:hover{
-  background: orange;
+  background: orange !important;
   transform: scale(1.1);
 }
 
 .audioCallBtn{
   width: 200px;
   height: 55px;
-  background: #ededed;
-  color: black;
-  margin-left: 55px;
-  transition: transform 0.5s;
+  background: #ededed !important;
+  color: black !important;
+  margin-left: 55px !important;
+  transition: transform 0.5s !important;
 }
 
 .audioCallBtn:hover{
-  background: rgb(0, 253, 181);
+  background: rgb(0, 253, 181)  !important;
   transform: scale(1.1);
+}
+
+.cardBtn:hover{
+	background:rgb(23, 176, 132) !important
 }

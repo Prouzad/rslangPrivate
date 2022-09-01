@@ -81,7 +81,8 @@ const CardWord = ({ card, user, group }: Props) => {
 			{user ?
           <Button
             variant="contained"
-            sx={{ marginTop: 2 }}
+            sx={{ marginTop: 2, background: "orange" }}
+						className={s.cardBtn}
             onClick={() => setWordToDictionary(user.userId, card.id,
               {
                 "difficulty": `${group}`,
