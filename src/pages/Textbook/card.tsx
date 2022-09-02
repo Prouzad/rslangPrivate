@@ -49,7 +49,8 @@ const CardWord = ({ card, user, group }: Props) => {
           <Typography
             variant="body2"
             color="text.secondary"
-          >{card.textMeaning}</Typography>
+            dangerouslySetInnerHTML={{ __html: card.textMeaning || "" }}
+          ></Typography>
           <VolumeDownIcon
             sx={{ height: 20, width: 20, cursor: 'pointer' }}
             onClick={() => start(audioMeanSrc)}
@@ -58,14 +59,16 @@ const CardWord = ({ card, user, group }: Props) => {
         <Typography
           variant="body2"
           color="text.secondary"
-        >{card.textMeaningTranslate}</Typography>
+          dangerouslySetInnerHTML={{ __html: card.textMeaningTranslate || "" }}
+        ></Typography>
 
         <hr />
         <Box sx={{ display: "flex", flexDirection: "row", columnGap: "6px" }}>
           <Typography
             variant="body2"
             color="text.secondary"
-          >{card.textExample}</Typography>
+            dangerouslySetInnerHTML={{ __html: card.textExample || "" }}
+          ></Typography>
           <VolumeDownIcon
             sx={{ height: 20, width: 20, cursor: 'pointer' }}
             onClick={() => start(audioExampleSrc)}
