@@ -1,5 +1,6 @@
 import './MainPage.model.css';
 import mainImage from '../../assets/img/mainImage.png';
+import Prouzad from '../../assets/img/prouzad.png'
 import TextBookImg from '../../assets/icon/textbook.png';
 import DictionaryImg from '../../assets/icon/dictionary.png';
 import GameImg from '../../assets/icon/game.jpg';
@@ -23,7 +24,7 @@ const advantagesArr = [
 		img: DictionaryImg,
 	},
 	{
-		title: 'Mini games',
+		title: 'Games',
 		descripction:
 			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam fuga sapiente culpa! Aliquid eveniet soluta vitae, consectetur nesciunt, excepturi placeat, aut corrupti molestiae reiciendis harum praesentium? Sit perferendis debitis animi!',
 		img: GameImg,
@@ -43,7 +44,7 @@ const teamInfo = [
 			'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate, aliquid odio asperiores assumenda velit quisquam maxime illo? In porro tenetur maiores ducimus fugit obcaecati dolore ex, iusto neque et!',
 		title: 'Frontend developer',
 		link: '/',
-		image: AvatarImg,
+		image: Prouzad,
 	},
 	{
 		name: 'Aigerim Temirova',

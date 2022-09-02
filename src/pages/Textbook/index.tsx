@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   FormControl,
   InputLabel,
   MenuItem,
@@ -11,6 +12,7 @@ import { useEffect, useState } from "react";
 import s from "./Textbook.module.css";
 import { IProps, IWordCard } from "../../interfaces";
 import CardWord from "./card";
+import Footer from "../footer";
 import { getWords } from "../../api";
 
 const Textbook = ({ userData }: IProps) => {
@@ -18,7 +20,7 @@ const Textbook = ({ userData }: IProps) => {
   const [page, setPage] = useState(1);
   const [words, setWords] = useState<IWordCard[]>([]);
 
-  const handleChangeSection = (event: SelectChangeEvent) => {
+	const handleChangeSection = (event: SelectChangeEvent) => {
     setGroup(+event.target.value);
   };
 
@@ -32,18 +34,58 @@ const Textbook = ({ userData }: IProps) => {
 
 
   return (
+    <>
     <div className={s.contentBook}>
-      <h2>Text Book</h2>
-
       <Box
         sx={{
           display: "flex",
-          flexDirection: "row",
           alignItems: "center",
-          width: "100%",
-          columnGap: "8px",
+          width: "80%",
+          marginTop: "25px",
+          fontSize: "32px"
         }}
       >
+        <h2>Text Book</h2>
+      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          width: "80%",
+          height: "100%",
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "end",
+            justifyContent: "space-around",
+            width: "100%",
+            marginBottom: "25px",
+            flexWrap: "wrap",
+          }}
+        >
+        <Box
+          sx={{
+            width: "60%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
+          <Button
+            variant="contained"
+            className={s.sprintBtn}
+          >
+            Sprint
+          </Button>
+          <Button
+            variant="contained"
+            className={s.audioCallBtn}
+          >
+            Audio Call
+          </Button>
+        </Box>
         <FormControl
           sx={{
             width: "250px",
@@ -67,22 +109,19 @@ const Textbook = ({ userData }: IProps) => {
           </Select>
         </FormControl>
 
+        </Box>
         <Pagination
           count={30}
           page={page}
-          onChange={(e, value) => setPage(value)}
+          onChange={(_e, value) => setPage(value)}
           color="primary"
-        />
-      </Box>
-
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          width: "100%",
-          height: "100%",
-        }}
-      >
+          size="large"
+          sx={{
+            margin: "auto",
+            marginTop: "25px",
+            marginBottom: "45px",
+            fontSize: "45px"
+          }} />
         <Box className={s.bookPage}>
           {words.map((word) => {
             return <CardWord key={word.id} card={word} user={userData} group={group.toString()} />;
@@ -90,6 +129,8 @@ const Textbook = ({ userData }: IProps) => {
         </Box>
       </Box>
     </div>
+    <Footer />
+    </>
   );
 };
 
