@@ -7,6 +7,7 @@ import audioGame from '../../assets/icon/audioGame.svg';
 function Games() {
   let navigate = useNavigate();
   return (
+    <div className={s.cardWrapper}>
     <div className={s.contentGames}>
       <Card   sx={{ maxWidth: 350 }} className={s.card} >
         <CardContent className={s.cardContent}>
@@ -44,6 +45,7 @@ function Games() {
           </Button>
         </CardContent>
       </Card>
+    </div>
     </div>
   )
 }

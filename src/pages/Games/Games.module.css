@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 10%;
     flex-wrap: wrap;
     margin:0 40px 0 100px;
     gap: 30px;
@@ -25,7 +24,7 @@ img{
     min-height: 350px;
 }
 
-.cardSprintWrapper{
+.cardWrapper{
     display: grid;
     place-items: center;
     height: 100vh;
@@ -48,4 +47,14 @@ img{
     color: white;
     display: grid;
     place-items: center;
+}
+
+.contentCardVolume{
+    min-width:  90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.contentCardVolume button{
+    align-self: center;
 }

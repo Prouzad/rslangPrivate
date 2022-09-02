@@ -197,7 +197,7 @@ const Sprint = ({ userData }: IProps) => {
   const PageSprint = () => {
     if (dataWords) {
       return (
-        <Card className={s.cardSprintWrapper}>
+        <Card className={s.cardWrapper}>
           <div className={`${s.card} ' '  ${s.cardSprint}`}>
             <div className={s.timer}>{seconds}</div>
             <CardContent>
