@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Box, Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
-import s from '../../Games.module.css'
 import { PageSettingsProps } from '../../../../interfaces';
 
-const Start = (props: PageSettingsProps) => {
+const StartAudioCall = (props: PageSettingsProps) => {
   const [isStart, setIsStart] = useState(false);
   const [difficulty, setDifficulty] = useState('1');
 
   const handleChange = (event: SelectChangeEvent) => {
-    setDifficulty(event.target.value);
+    setDifficulty(event.target.value as string);
   };
 
   useEffect(() => {
@@ -22,10 +21,9 @@ const Start = (props: PageSettingsProps) => {
   };
 
   return (
-    <div className={s.cardSprintWrapper}>
-      <div className={`${s.card} ' '  ${s.cardSprint}`}>
-      <h2 >Sprint</h2>
-        <Box sx={{ width: 200 }}>
+    <>
+      <h2>AudioCall</h2>
+        <Box sx={{ width: 150 }}>
           <FormControl fullWidth variant='standard'>
             <InputLabel>Select the Level</InputLabel>
             <Select
@@ -40,12 +38,11 @@ const Start = (props: PageSettingsProps) => {
             </Select>
           </FormControl>
         </Box>
-        <Button variant='contained' sx={{ margin: 2 }} onClick={onStart}>
+        <Button variant='contained' onClick={onStart}>
           START
         </Button>
-      </div>
-    </div>
+    </>
   );
 };
 
-export default Start;
+export default StartAudioCall;

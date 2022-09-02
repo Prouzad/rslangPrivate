@@ -24,7 +24,7 @@ const advantagesArr = [
 		img: DictionaryImg,
 	},
 	{
-		title: 'Mini games',
+		title: 'Games',
 		descripction:
 			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam fuga sapiente culpa! Aliquid eveniet soluta vitae, consectetur nesciunt, excepturi placeat, aut corrupti molestiae reiciendis harum praesentium? Sit perferendis debitis animi!',
 		img: GameImg,
