@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Box, Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
+import s from '../../Games.module.css'
 import { PageSettingsProps } from '../../../../interfaces';
 
 const StartAudioCall = (props: PageSettingsProps) => {
@@ -21,12 +22,13 @@ const StartAudioCall = (props: PageSettingsProps) => {
   };
 
   return (
-    <>
-      <h2>AudioCall</h2>
-        <Box sx={{ width: 150 }}>
+    <div className={s.cardWrapper}>
+      <div className={`${s.card} ' '  ${s.cardSprint}`}>
+        <h2>AudioCall</h2>
+        <Box sx={{ width: 200 }}>
           <FormControl fullWidth variant='standard'>
             <InputLabel>Select the Level</InputLabel>
-            <Select
+            <Select 
               value={difficulty}
               onChange={handleChange}>
               <MenuItem value='1'>1</MenuItem>
@@ -38,10 +40,11 @@ const StartAudioCall = (props: PageSettingsProps) => {
             </Select>
           </FormControl>
         </Box>
-        <Button variant='contained' onClick={onStart}>
+        <Button variant='contained' sx={{ margin: 2 }} onClick={onStart}>
           START
         </Button>
-    </>
+      </div>
+    </div>
   );
 };
 

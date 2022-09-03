@@ -22,15 +22,15 @@ const Start = (props: PageSettingsProps) => {
   };
 
   return (
-    <div className={s.contentGames}>
-      <h2 >Sprint</h2>
-      <div>
+    <div className={s.cardWrapper}>
+      <div className={`${s.card} ' '  ${s.cardSprint}`}>
+        <h2 >Sprint</h2>
         <Box sx={{ width: 200 }}>
           <FormControl fullWidth variant='standard'>
             <InputLabel>Select the Level</InputLabel>
             <Select
-              value={difficulty}
-              onChange={handleChange}>
+               value={difficulty} 
+               onChange={handleChange}>
               <MenuItem value='1'>1</MenuItem>
               <MenuItem value='2'>2</MenuItem>
               <MenuItem value='3'>3</MenuItem>
