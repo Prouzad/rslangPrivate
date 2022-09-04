@@ -4,12 +4,30 @@ import { createUserType } from './api.model'
 
 export const baseURL = "https://rs-langs.herokuapp.com/";
 
-export const createUser = async (user: createUserType) => {
-
+export async function createUser (user: createUserType) {
+  return await axios.post(
+    `${baseURL}users`,
+    user,
+    { 
+      headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      },
+    },
+  )
 };
 
-export const loginUser = async (user: createUserType) => {
-
+export async function loginUser (user: createUserType) {
+  return await axios.post(
+    `${baseURL}signin`,
+    user,
+    { 
+      headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      },
+    },
+  )
 };
 
 
@@ -24,6 +42,9 @@ export const removeLocalStorage = (user: string) => {
   localStorage.removeItem(user)
 };
 
+export const setLocalStorage = (user: string) => {
+  localStorage.setItem('userData', user)
+};
 
 export async function getWords(activePage: number, groupNum: number) {
   return await axios.get(

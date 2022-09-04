@@ -9,7 +9,7 @@ import {
   AlertTitle,
 } from "@mui/material";
 import { useRef, useState, useEffect } from "react";
-import axios from "../../../api/axios";
+import {createUser} from "../../../api/index";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGEX = /^[0-9a-zA-Z!@#$%^&*]{8,}$/;
@@ -64,14 +64,7 @@ const SignUp = () => {
     }
 
     try {
-      const response = await axios.post(
-        "/users",
-        JSON.stringify({
-          name: user,
-          email: mail,
-          password: pwd,
-        }),
-      );
+      const response = await createUser({ name: user, email: mail, password: pwd})
       console.log(response.data);
       setSuccessMsg(true);
     } catch (err: any) {
@@ -105,7 +98,7 @@ const SignUp = () => {
               fontWeight: "400",
             }}
           >
-            Регистрация завершена!
+            Registration completed!
           </Typography>
         </Box>
       ) : (
@@ -129,10 +122,11 @@ const SignUp = () => {
               required
               name="name"
               id="username"
-              label="Ваше имя"
+              label="Your name"
               type="text"
               autoComplete="off"
               margin="normal"
+              helperText="Min 4 characters"
               InputProps={{
                 ref: userRef,
                 endAdornment: validName ? (
@@ -148,7 +142,7 @@ const SignUp = () => {
               required
               name="email"
               id="email-input"
-              label="Ваш email"
+              label="Your email"
               type="text"
               margin="normal"
               InputProps={{
@@ -165,11 +159,11 @@ const SignUp = () => {
               required
               name="password"
               id="outlined-password-input"
-              label="Пароль"
+              label="Password"
               type="password"
               autoComplete="off"
               margin="normal"
-              helperText="Минимум 8 символов"
+              helperText="Min 8 characters"
               InputProps={{
                 endAdornment: validPwd ? (
                   <DoneIcon sx={{ color: "#1976d2" }} />
