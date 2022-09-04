@@ -13,13 +13,13 @@ export interface IWordCard {
   wordTranslate: string;
   textMeaningTranslate: string;
   textExampleTranslate: string;
-  difficult?: boolean;
+  difficult?: boolean | string;
   learned?: boolean;
 }
 
 export interface IUserWord {
   id: string;
-  difficulty: string;
+  difficulty: string | boolean;
   wordId: string;
   optional: {
     game?: {
@@ -43,6 +43,7 @@ export interface IWordType {
     game?: {
       sprint?: string;
       audioCall?: string;
+			
     },
     largestSeriesCorAnswS?: string,
     largestSeriesCorAnswAC?: string,

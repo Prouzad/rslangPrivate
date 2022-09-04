@@ -6,6 +6,8 @@ import {
   Pagination,
   Select,
   SelectChangeEvent,
+	Tab,
+	Tabs,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import s from "./Dictionary.module.css";
@@ -13,9 +15,9 @@ import { IProps, IUserWord, IWordCard } from "../../interfaces";
 import CardWord from "./word";
 import { getUserWords, getWords } from "../../api";
 
-
 const Dictionary = ({ userData }: IProps) => {
   const [group, setGroup] = useState(0);
+  const [diff, setDiff] = useState('Hard');
   const [page, setPage] = useState(1);
   const [words, setWords] = useState<IUserWord[]>([]);
   const [allWords, setAllWords] = useState<IWordCard[]>([]);
@@ -23,6 +25,10 @@ const Dictionary = ({ userData }: IProps) => {
   const handleChangeSection = (event: SelectChangeEvent) => {
     setGroup(+event.target.value);
   };
+
+	const handleChange = (event: React.SyntheticEvent, newValue: string)=>{
+		setDiff(newValue)
+	}
 
 
   useEffect(() => {
@@ -40,11 +46,20 @@ const Dictionary = ({ userData }: IProps) => {
     }
   }, [page, group, userData]);
 
-  const intersection = allWords.filter(o1 => words.some(o2 => o1.id === o2.wordId));
+  const intersection = allWords.filter(o1 => words.filter(itme => itme.difficulty === `${diff}` ).some(o2 => o1.id === o2.wordId));
 
   return (
     <div className={s.contentBook}>
-      <h2>Dictionary</h2>
+      <Tabs
+				value={diff}
+				onChange={handleChange}
+				textColor="secondary"
+				indicatorColor="secondary"
+				aria-label="secondary tabs example"
+			>
+				<Tab value="Hard" label="Hard" />
+				<Tab value="Learned" label="Learned" />
+			</Tabs>
 
       <Box
         sx={{

@@ -102,6 +102,26 @@ export async function getUserWords(userId: string | undefined, token: string | u
   }).then(response => { return response })
 }
 
+export async function ChangeUserWords(
+  userId: string,
+  wordId: string,
+  wordInfo: IWordType,
+  token: string
+) {
+  await axios.put(
+    `${baseURL}users/${userId}/words/${wordId}`,
+    wordInfo,
+    {
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    }
+  )
+    .then(response => { return response })
+}
+
 export async function getWord(userId: string, wordId: string, token: string) {
   const response = axios.get(`${baseURL}users/${userId}/words/${wordId}`, {
       method: 'GET',
