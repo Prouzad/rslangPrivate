@@ -56,56 +56,65 @@ const Dictionary = ({ userData }: IProps) => {
 				textColor="secondary"
 				indicatorColor="secondary"
 				aria-label="secondary tabs example"
+				sx={{margin: '25px'}}
 			>
 				<Tab value="Hard" label="Hard" />
 				<Tab value="Learned" label="Learned" />
 			</Tabs>
-
       <Box
         sx={{
           display: "flex",
-          flexDirection: "row",
           alignItems: "center",
-          width: "100%",
+					justifyContent: 'flex-end',
+          width: "80%",
           columnGap: "8px",
         }}
       >
-        <FormControl
-          sx={{
-            width: "250px",
-          }}
-        >
-          <InputLabel id="select-label">Select SECTION</InputLabel>
-          <Select
-            labelId="select-label"
-            id="select"
-            value={group.toString()}
-            label="Select SECTION"
-            onChange={handleChangeSection}
-          >
-            <MenuItem value={0}>Section 1</MenuItem>
-            <MenuItem value={1}>Section 2</MenuItem>
-            <MenuItem value={2}>Section 3</MenuItem>
-            <MenuItem value={3}>Section 4</MenuItem>
-            <MenuItem value={4}>Section 5</MenuItem>
-            <MenuItem value={5}>Section 6</MenuItem>
-            <MenuItem value={6}>Section 7</MenuItem>
-          </Select>
-        </FormControl>
-
-        <Pagination
-          count={30}
-          page={page}
-          onChange={(e, value) => setPage(value)}
-          color="primary"
-        />
+				<Box
+					sx={{
+						display: "flex",
+						alignItems: "center",
+						justifyContent: 'space-around',
+						width: "70%",
+						columnGap: "8px",
+					}}
+				>
+					<Pagination
+						count={30}
+						page={page}
+						onChange={(e, value) => setPage(value)}
+						color="primary"
+					/>
+					<FormControl
+						sx={{
+							width: "250px",
+						}}
+					>
+						<InputLabel id="select-label">Select SECTION</InputLabel>
+						<Select
+							labelId="select-label"
+							id="select"
+							value={group.toString()}
+							label="Select SECTION"
+							onChange={handleChangeSection}
+						>
+							<MenuItem value={0}>Section 1</MenuItem>
+							<MenuItem value={1}>Section 2</MenuItem>
+							<MenuItem value={2}>Section 3</MenuItem>
+							<MenuItem value={3}>Section 4</MenuItem>
+							<MenuItem value={4}>Section 5</MenuItem>
+							<MenuItem value={5}>Section 6</MenuItem>
+							<MenuItem value={6}>Section 7</MenuItem>
+						</Select>
+						</FormControl>	
+					</Box>        
       </Box>
 
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
-          width: "100%",
+          width: "80%",
           height: "100%",
         }}
       >

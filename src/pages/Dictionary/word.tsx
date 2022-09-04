@@ -4,6 +4,7 @@ import { IUserInfo, IWordCard } from "../../interfaces";
 import VolumeDownIcon from "@mui/icons-material/VolumeDown";
 import { baseURL, deleteWordFromDictionary } from "../../api";
 import { useState } from "react";
+import s from "./Dictionary.module.css";
 
 interface Props {
   card?: IWordCard;
@@ -27,9 +28,9 @@ const CardWord = ({ card, user }: Props) => {
 
   return (
 		IsShow
-    ? <Card sx={{ maxWidth: 350 }}>
-      <CardMedia component="img" alt="XX" height="180" image={imgSrc} />
+    ? <Card  className={s.cardBox}>
       <CardContent>
+      <CardMedia component="img" alt="XX" height="180" image={imgSrc} sx={{marginBottom: 5,}} />
         <Box sx={{ display: "flex", flexDirection: "row", columnGap: "6px" }}>
           <Typography gutterBottom variant="h5" component="div">
             {card?.word}
@@ -38,7 +39,7 @@ const CardWord = ({ card, user }: Props) => {
             {card?.transcription}
           </Typography>
           <VolumeDownIcon
-            sx={{ height: 20, width: 20 }}
+            sx={{ height: 20, width: 20, cursor: 'pointer' }}
             onClick={() => start(audioSrc)}
           />
         </Box>
@@ -54,7 +55,7 @@ const CardWord = ({ card, user }: Props) => {
             dangerouslySetInnerHTML={{ __html: card?.textMeaning || "" }}
           ></Typography>
           <VolumeDownIcon
-            sx={{ height: 20, width: 20 }}
+            sx={{ height: 20, width: 20, cursor: 'pointer' }}
             onClick={() => start(audioMeanSrc)}
           />
         </Box>
@@ -72,7 +73,7 @@ const CardWord = ({ card, user }: Props) => {
             dangerouslySetInnerHTML={{ __html: card?.textExample || "" }}
           ></Typography>
           <VolumeDownIcon
-            sx={{ height: 20, width: 20 }}
+            sx={{ height: 20, width: 20, cursor: 'pointer' }}
             onClick={() => start(audioExampleSrc)}
           />
         </Box>
@@ -81,8 +82,18 @@ const CardWord = ({ card, user }: Props) => {
           variant="body2"
           color="text.secondary"
         >{card?.textExampleTranslate}</Typography>
-        <Button
+       
+      </CardContent>
+			<Box
+				sx={{
+					width: '100%',
+					display: 'flex',
+					justifyContent: 'space-evenly',
+				}}
+			>
+			 <Button
           variant="contained"
+					color="error"
           sx={{ marginTop: 2 }}
           onClick={() => {
             deleteWordFromDictionary(user?.userId, card?.id, user?.token)
@@ -91,9 +102,13 @@ const CardWord = ({ card, user }: Props) => {
         >
           Delete from dictionary
         </Button>
-      </CardContent>
+			</Box>
+		
     </Card>
+
 		: null
+       
+
   );
 };
 
