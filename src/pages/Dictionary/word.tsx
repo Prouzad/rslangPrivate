@@ -8,7 +8,7 @@ interface Props {
   card?: IWordCard;
   user?: IUserInfo;
 }
-const CardWord = ({ card, user }: Props) => {
+const CardWord = ({ card, user}: Props) => {
   const imgSrc = `${baseURL}${card?.image}`;
   const audioSrc = `${baseURL}${card?.audio}`;
   const audioMeanSrc = `${baseURL}${card?.audioMeaning}`;

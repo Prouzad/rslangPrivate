@@ -7,12 +7,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import CloseIcon from '@mui/icons-material/Close';
-import { Link } from 'react-router-dom';
 import DnsIcon from '@mui/icons-material/Dns';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import BookIcon from '@mui/icons-material/Book';
@@ -21,6 +16,9 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import LoginIcon from '@mui/icons-material/Login';
 import LoginPage from '../Authorization/LoginPage';
 import { IProps } from '../../interfaces';
+import NavCard from './navCard';
+import { Link } from 'react-router-dom';
+import { removeLocalStorage } from '../../api';
 
 const drawerWidth = 240;
 
@@ -89,15 +87,12 @@ export default function Navbar({ userData }: IProps) {
 	const handleDrawerClose = () => {
 		setOpen(true);
 	};
-
 	const renderSwitch = (param: any) => {
 		switch (param) {
 			case 'Main':
 				return <DnsIcon style={{ color: 'white' }} />;
 			case 'Textbook':
 				return <MenuBookIcon style={{ color: 'white' }} />;
-			case 'Dictionary':
-				return <BookIcon style={{ color: 'white' }} />;
 			case 'Games':
 				return <SportsEsportsIcon style={{ color: 'white' }} />;
 			case 'Statistics':
@@ -106,7 +101,6 @@ export default function Navbar({ userData }: IProps) {
 				return <DnsIcon style={{ color: 'white' }} />;
 		}
 	};
-
 	return (
 		<>
 			<LoginPage show={showSignIn} handleClose={setShowSignIn} />
@@ -138,76 +132,37 @@ export default function Navbar({ userData }: IProps) {
 							</DrawerHeader>
 							<Divider />
 							<List>
-								{['Main', 'Textbook', 'Games', 'Statistics', 'Dictionary'].map(
+								{['Main', 'Textbook', 'Games', 'Statistics'].map(
 									(text, index) => (
-										<Link to={text.toLowerCase()}>
-											<ListItem
-												key={text}
-												disablePadding
-												sx={{ display: 'block' }}
-											>
-												<ListItemButton
-													sx={{
-														minHeight: 48,
-														justifyContent: open ? 'initial' : 'center',
-														px: 2.5,
-													}}
-												>
-													<ListItemIcon
-														sx={{
-															minWidth: 0,
-															mr: open ? 3 : 'auto',
-															justifyContent: 'center',
-														}}
-													>
-														{renderSwitch(text)}
-													</ListItemIcon>
-													<ListItemText
-														primary={text}
-														sx={{
-															opacity: open ? 1 : 0,
-															textDecoration: 'none',
-															color: 'white',
-														}}
-													/>
-												</ListItemButton>
-											</ListItem>
+										<Link to={text.toLowerCase()} key={index}>
+											<NavCard open={open} renderSwitch={renderSwitch(text)} text={text} />
 										</Link>
 									)
 								)}
+								{userData ?
+									<Link to='dictionary'>
+										<NavCard open={open} renderSwitch={<BookIcon style={{ color: 'white' }} />} text='Dictionary' />
+									</Link>
+									: null
+								}
 							</List>
 							<Divider />
 						</div>
 						<div className='navLog'>
 							<List>
-								<ListItem key='login' disablePadding sx={{ display: 'block' }}>
-									<ListItemButton
-										sx={{
-											minHeight: 48,
-											justifyContent: open ? 'initial' : 'center',
-											px: 2.5,
-										}}
-										onClick={() => setShowSignIn(true)}
-									>
-										<ListItemIcon
-											sx={{
-												minWidth: 0,
-												mr: open ? 3 : 'auto',
-												justifyContent: 'center',
-											}}
-										>
-											<LoginIcon style={{ color: 'white' }} />
-										</ListItemIcon>
-										<ListItemText
-											primary='Sign in'
-											sx={{
-												opacity: open ? 1 : 0,
-												textDecoration: 'none',
-												color: 'white',
-											}}
-										/>
-									</ListItemButton>
-								</ListItem>
+								{!userData ?
+									<div onClick={() => {
+										setShowSignIn(true)
+									}}>
+										<NavCard open={open} renderSwitch={<LoginIcon style={{ color: 'white' }} />} text='Sign In' />
+									</div>
+									:
+									<div onClick={() => {
+										removeLocalStorage('userData')
+									}}>
+										<NavCard open={open} renderSwitch={<LoginIcon style={{ color: 'white' }} />} text='Log out' />
+									</div>
+								}
 							</List>
 						</div>
 					</div>

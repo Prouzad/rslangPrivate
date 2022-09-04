@@ -5,31 +5,11 @@ import { createUserType } from './api.model'
 export const baseURL = "https://rs-langs.herokuapp.com/";
 
 export const createUser = async (user: createUserType) => {
-  const rawResponse = await fetch(`${baseURL}users`, {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(user)
-  });
-  const content = await rawResponse.json();
 
-  console.log(content);
 };
 
 export const loginUser = async (user: createUserType) => {
-  const rawResponse = await fetch(`${baseURL}signin`, {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(user)
-  });
-  const content = await rawResponse.json();
 
-  console.log(content);
 };
 
 
@@ -37,6 +17,11 @@ export const getLocalStorage = () => {
   if (localStorage.getItem('userData')) {
     return JSON.parse(localStorage.getItem('userData') as string);
   }
+};
+
+
+export const removeLocalStorage = (user: string) => {
+  localStorage.removeItem(user)
 };
 
 
@@ -104,13 +89,13 @@ export async function getUserWords(userId: string | undefined, token: string | u
 
 export async function getWord(userId: string, wordId: string, token: string) {
   const response = axios.get(`${baseURL}users/${userId}/words/${wordId}`, {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-    })
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  })
   return await response;
 }
 

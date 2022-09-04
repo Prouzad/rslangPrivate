@@ -94,7 +94,7 @@ const CardWord = ({ card, user, group }: Props) => {
               user.token
             )}
           >
-            Add to learn
+            Difficult
           </Button>
           : null
         }

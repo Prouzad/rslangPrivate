@@ -9,6 +9,7 @@ import AvatarImg from '../../assets/icon/avatar.png';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Footer from '../footer/index';
+import { IProps } from '../../interfaces';
 
 const advantagesArr = [
 	{
@@ -16,12 +17,6 @@ const advantagesArr = [
 		descripction:
 			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam fuga sapiente culpa! Aliquid eveniet soluta vitae, consectetur nesciunt, excepturi placeat, aut corrupti molestiae reiciendis harum praesentium? Sit perferendis debitis animi!',
 		img: TextBookImg,
-	},
-	{
-		title: 'Dictionary',
-		descripction:
-			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam fuga sapiente culpa! Aliquid eveniet soluta vitae, consectetur nesciunt, excepturi placeat, aut corrupti molestiae reiciendis harum praesentium? Sit perferendis debitis animi!',
-		img: DictionaryImg,
 	},
 	{
 		title: 'Games',
@@ -64,7 +59,7 @@ const teamInfo = [
 	},
 ];
 
-const MainPage = () => {
+const MainPage = ({ userData }: IProps) => {
 	return (
 		<div>
 			<h3 style={{ fontSize: '32px', fontWeight: 400, marginLeft: '145px' }}>
@@ -111,6 +106,23 @@ const MainPage = () => {
 							</div>
 						</Link>
 					))}
+					{userData ?
+						<Link
+							to={'/dictionary'}
+							className='advantagesLink'
+						>
+							<div className='advantages'>
+								<div className='advantageLogo'>
+									<img src={DictionaryImg} alt='textbook' />
+								</div>
+								<div className='advantageTitle'>
+									<h2>Dictionary</h2>
+								</div>
+								<div className='advantageDesc'>The dictionary contains lists of studied words, words that do not need to be learned, as well as those that cause difficulties. The dictionary reflects statistics for each section and student progress.</div>
+							</div>
+						</Link>
+						: null
+					}
 				</div>
 				<div className='teamBox'>
 					<h2>Our Team</h2>
