@@ -24,7 +24,6 @@ const Dictionary = ({ userData }: IProps) => {
     setGroup(+event.target.value);
   };
 
-
   useEffect(() => {
     async function fetchAllWords() {
       const wordsArr = await getWords(page - 1, group);

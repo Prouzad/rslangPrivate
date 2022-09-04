@@ -23,18 +23,21 @@ const App = () => {
 		fetchToken()
 	}, [])
 
+	console.log('USER', userData);
+
+
 	return (
 		<>
-			<Navbar userData={userData} />
+			<Navbar userData={userData} setUserData={setUserData}/>
 			<Routes>
-				<Route path='/' element={<MainPage />} />
-				<Route path='/main' element={<MainPage />} />
+				<Route path='/' element={<MainPage userData={userData} />} />
+				<Route path='/main' element={<MainPage userData={userData} />} />
 				<Route path='/textbook' element={<Textbook userData={userData} />} />
 				<Route path='/games' element={<Games />} />
 				<Route path='/statistics' element={<Statistics />} />
 				<Route path="/dictionary" element={<Dictionary userData={userData} />} />
 				<Route path="/sprint" element={<Sprint userData={userData} />} />
-				<Route path="/audio-call" element={<AudioCall userData={userData}/>} />
+				<Route path="/audio-call" element={<AudioCall userData={userData} />} />
 			</Routes>
 		</>
 	);
