@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useKey } from 'react-keyboard-hooks'
 import { useSound } from 'use-sound';
-import { Button, Card, CardActions, CardContent, Typography } from '@mui/material';
+import { Card, CardActions, CardContent, Typography } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { IUserWord, IWordCard, IProps } from '../../../interfaces';
@@ -197,11 +197,10 @@ const Sprint = ({ userData }: IProps) => {
   const PageSprint = () => {
     if (dataWords) {
       return (
-        <Card className={s.cardWrapper}>
-          <div className={`${s.card} ' '  ${s.cardSprint}`}>
-            <div className={s.timer}>{seconds}</div>
+          <Card className={s.contentGames}>
             <CardContent>
-              <Typography sx={{ mb: 1.5, fontWeight: "900", fontSize: 50 }}>
+              <div>{seconds}</div>
+              <Typography sx={{ mb: 1.5, fontWeight: '900', fontSize: 50, }} >
                 {dataWords[numberCurrentWord].word}
               </Typography>
               <Typography sx={{ mb: 1.5 }} color="text.secondary">
@@ -209,17 +208,10 @@ const Sprint = ({ userData }: IProps) => {
               </Typography>
             </CardContent>
             <CardActions>
-            <Button data-name="right" onClick={onSelect}>
-                <ArrowBackIcon />
-                Right
-                </Button>
-                <Button data-name="wrong" onClick={onSelect}>
-                Wrong
-                <ArrowForwardIcon />
-                </Button>
+              <button data-name="right" onClick={onSelect}><ArrowBackIcon />Right</button>
+              <button data-name="wrong" onClick={onSelect}>Wrong<ArrowForwardIcon /></button>
             </CardActions>
-          </div>
-        </Card>
+          </Card>
       )
     } else return null;
   }

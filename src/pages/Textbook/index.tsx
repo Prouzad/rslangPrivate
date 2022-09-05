@@ -10,15 +10,18 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import s from "./Textbook.module.css";
-import { IProps, IWordCard } from "../../interfaces";
+import { IProps, IUserWord, IWordCard } from "../../interfaces";
 import CardWord from "./card";
 import Footer from "../footer";
-import { getWords } from "../../api";
+import { getUserWords, getWords } from "../../api";
 
 const Textbook = ({ userData }: IProps) => {
   const [group, setGroup] = useState(0);
   const [page, setPage] = useState(1);
   const [words, setWords] = useState<IWordCard[]>([]);
+	const [userWords, setuserWords] = useState<IUserWord[]>([]);
+
+	
 
 	const handleChangeSection = (event: SelectChangeEvent) => {
     setGroup(+event.target.value);
@@ -29,9 +32,19 @@ const Textbook = ({ userData }: IProps) => {
       const wordsArr = await getWords(page - 1, group);
       setWords(wordsArr.data);
     }
-    fetchWords();
-  }, [page, group]);
+		async function fetchUserWords() {
+      const userWordsArr = await getUserWords(userData?.userId, userData?.token);
+      setuserWords(userWordsArr.data);
+    }
+    if (userData?.token) {
+      fetchUserWords()
+    }
+		fetchWords()
 
+  }, [page, group, userData]);
+
+	const difficultArr = userWords.filter(item => item.difficulty === 'Hard')
+	const learnedArr = userWords.filter(item => item.difficulty === 'Learned')
 
   return (
     <>
@@ -124,7 +137,7 @@ const Textbook = ({ userData }: IProps) => {
           }} />
         <Box className={s.bookPage}>
           {words.map((word) => {
-            return <CardWord key={word.id} card={word} user={userData} group={group.toString()} />;
+            return <CardWord key={word.id} card={word} user={userData} group={group.toString()} diff={difficultArr.some(item => item.wordId === word.id)} learned={learnedArr.some(item => item.wordId === word.id)} />;
           })}
         </Box>
       </Box>

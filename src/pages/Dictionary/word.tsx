@@ -3,12 +3,17 @@ import { Box } from "@mui/system";
 import { IUserInfo, IWordCard } from "../../interfaces";
 import VolumeDownIcon from "@mui/icons-material/VolumeDown";
 import { baseURL, deleteWordFromDictionary } from "../../api";
+import { useState } from "react";
+import s from "./Dictionary.module.css";
 
 interface Props {
   card?: IWordCard;
   user?: IUserInfo;
 }
-const CardWord = ({ card, user}: Props) => {
+
+const CardWord = ({ card, user }: Props) => {
+	const [IsShow, setIsShow] = useState(true)
+
   const imgSrc = `${baseURL}${card?.image}`;
   const audioSrc = `${baseURL}${card?.audio}`;
   const audioMeanSrc = `${baseURL}${card?.audioMeaning}`;
@@ -19,10 +24,15 @@ const CardWord = ({ card, user}: Props) => {
     audio.play();
   };
 
+	const handleChange = () => {
+		setIsShow(false)
+	}
+
   return (
-    <Card sx={{ maxWidth: 350 }}>
-      <CardMedia component="img" alt="XX" height="180" image={imgSrc} />
+		IsShow
+    ? <Card  className={s.cardBox}>
       <CardContent>
+      <CardMedia component="img" alt="XX" height="180" image={imgSrc} sx={{marginBottom: 5,}} />
         <Box sx={{ display: "flex", flexDirection: "row", columnGap: "6px" }}>
           <Typography gutterBottom variant="h5" component="div">
             {card?.word}
@@ -31,7 +41,7 @@ const CardWord = ({ card, user}: Props) => {
             {card?.transcription}
           </Typography>
           <VolumeDownIcon
-            sx={{ height: 20, width: 20 }}
+            sx={{ height: 20, width: 20, cursor: 'pointer' }}
             onClick={() => start(audioSrc)}
           />
         </Box>
@@ -47,7 +57,7 @@ const CardWord = ({ card, user}: Props) => {
             dangerouslySetInnerHTML={{ __html: card?.textMeaning || "" }}
           ></Typography>
           <VolumeDownIcon
-            sx={{ height: 20, width: 20 }}
+            sx={{ height: 20, width: 20, cursor: 'pointer' }}
             onClick={() => start(audioMeanSrc)}
           />
         </Box>
@@ -65,7 +75,7 @@ const CardWord = ({ card, user}: Props) => {
             dangerouslySetInnerHTML={{ __html: card?.textExample || "" }}
           ></Typography>
           <VolumeDownIcon
-            sx={{ height: 20, width: 20 }}
+            sx={{ height: 20, width: 20, cursor: 'pointer' }}
             onClick={() => start(audioExampleSrc)}
           />
         </Box>
@@ -74,17 +84,33 @@ const CardWord = ({ card, user}: Props) => {
           variant="body2"
           color="text.secondary"
         >{card?.textExampleTranslate}</Typography>
-        <Button
+       
+      </CardContent>
+			<Box
+				sx={{
+					width: '100%',
+					display: 'flex',
+					justifyContent: 'space-evenly',
+				}}
+			>
+			 <Button
           variant="contained"
+					color="error"
           sx={{ marginTop: 2 }}
           onClick={() => {
             deleteWordFromDictionary(user?.userId, card?.id, user?.token)
+						handleChange()
           }}
         >
           Delete from dictionary
         </Button>
-      </CardContent>
+			</Box>
+		
     </Card>
+
+		: null
+       
+
   );
 };
 

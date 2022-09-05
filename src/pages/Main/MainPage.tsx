@@ -1,6 +1,7 @@
 import './MainPage.model.css';
 import mainImage from '../../assets/img/mainImage.png';
 import Prouzad from '../../assets/img/prouzad.png'
+import aiscode from '../../assets/img/aiscode.png'
 import TextBookImg from '../../assets/icon/textbook.png';
 import DictionaryImg from '../../assets/icon/dictionary.png';
 import GameImg from '../../assets/icon/game.jpg';
@@ -47,7 +48,7 @@ const teamInfo = [
 			'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate, aliquid odio asperiores assumenda velit quisquam maxime illo? In porro tenetur maiores ducimus fugit obcaecati dolore ex, iusto neque et!',
 		title: 'Frontend developer',
 		link: '/',
-		image: AvatarImg,
+		image: aiscode,
 	},
 	{
 		name: 'Maria Gavrilova',

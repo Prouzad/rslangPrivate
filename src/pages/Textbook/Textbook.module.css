@@ -22,11 +22,10 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 5px 10px 10px rgba(0,0,0,0.4);
+  box-shadow: 5px 10px 10px rgba(0,0,0,0.4) !important;
   max-width: 300px;
   padding-bottom: 20px;
   border-radius: 15px !important;
-  background: #fdfeff !important;
 }
 
 .sprintBtn{
