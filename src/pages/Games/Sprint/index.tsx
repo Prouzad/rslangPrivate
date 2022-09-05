@@ -1,17 +1,21 @@
-import { useEffect, useState } from 'react';
-import { useKey } from 'react-keyboard-hooks'
-import { useSound } from 'use-sound';
-import {  Button, Card, CardActions, CardContent, Typography } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { IUserWord, IWordCard, IProps } from '../../../interfaces';
-import s from '../Games.module.css';
-import { changeWord, getUserWords, getWord, getWords, setWordToDictionary } from '../../../api';
-import Start from './Start';
-import Result from './Result';
+import { useEffect, useState } from "react";
+import { useKey } from "react-keyboard-hooks";
+import { useSound } from "use-sound";
+import {
+  Button, Card, CardActions, CardContent, Typography,
+} from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { IUserWord, IWordCard, IProps } from "../../../interfaces";
+import s from "../Games.module.css";
+import {
+  changeWord, getUserWords, getWord, getWords, setWordToDictionary,
+} from "../../../api";
+import Start from "./Start";
+import Result from "./Result";
 
 const Sprint = ({ userData }: IProps) => {
-  const [difficulty, setDifficulty] = useState('1');
+  const [difficulty, setDifficulty] = useState("1");
   const [isSignIn, setIsSignIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isStart, setIsStart] = useState(false);
@@ -28,8 +32,8 @@ const Sprint = ({ userData }: IProps) => {
   const [timerId, setTimerId] = useState<NodeJS.Timeout | null>(null);
   const [largestSeriesCorAnsw, setLargestSeriesCorAnsw] = useState<number>(0);
 
-  const correct = require('../../../assets/sounds/correct.mp3');
-  const incorrect = require('../../../assets/sounds/incorrect.mp3');
+  const correct = require("../../../assets/sounds/correct.mp3");
+  const incorrect = require("../../../assets/sounds/incorrect.mp3");
   const [cor] = useSound(correct);
   const [inCor] = useSound(incorrect);
 
@@ -37,7 +41,7 @@ const Sprint = ({ userData }: IProps) => {
     let numb: number;
     numb = Math.floor(min + Math.random() * (max - min));
     if (numbersPageList.includes(numb)) return getRandomNumberPage(min, max);
-    else { setNumbersPageList((numbersPageList) => [...numbersPageList, numb]) }
+    setNumbersPageList((numbersPageList) => [...numbersPageList, numb]);
     return numb;
   };
 
@@ -46,14 +50,14 @@ const Sprint = ({ userData }: IProps) => {
     numb = Math.floor(min + Math.random() * (max - min));
 
     if (numbersWordList.includes(numb)) return getRandomNumberWord(min, max);
-    else { setNumbersWordList((numbersWordList) => [...numbersWordList, numb]) }
+    setNumbersWordList((numbersWordList) => [...numbersWordList, numb]);
     return numb;
   };
 
   const onStart = (difficulty: string, isStart: boolean) => {
     setDifficulty(difficulty);
     setIsStart(isStart);
-  }
+  };
 
   useEffect(() => {
     if (isStart) {
@@ -81,16 +85,15 @@ const Sprint = ({ userData }: IProps) => {
   const countdown = () => {
     const timeoutId = setTimeout(() => {
       countdown();
-    }, 1000)
+    }, 1000);
     setTimerId(timeoutId);
     setSeconds((seconds) => {
       if (seconds > 0) {
         return (seconds - 1);
-      } else {
-        setIsFinished(true);
-        setIsLoading(true);
-        return 0;
-      };
+      }
+      setIsFinished(true);
+      setIsLoading(true);
+      return 0;
     });
   };
 
@@ -126,19 +129,17 @@ const Sprint = ({ userData }: IProps) => {
     if (isSignIn) {
       setIsLoading(true);
       addUserWord(String(answer));
-    } else {
-      if (dataWords && dataWords.length > 0) {
-        setUserWordsList((userWordsList) => [...userWordsList, {
-          id: '',
-          difficulty: `${difficulty}`,
-          wordId: `${dataWords[numberCurrentWord].id}`,
-          optional: {
-            game: {
-              sprint: `${answer}`
-            }
-          }
-        }])
-      }
+    } else if (dataWords && dataWords.length > 0) {
+      setUserWordsList((userWordsList) => [...userWordsList, {
+        id: "",
+        difficulty: `${difficulty}`,
+        wordId: `${dataWords[numberCurrentWord].id}`,
+        optional: {
+          game: {
+            sprint: `${answer}`,
+          },
+        },
+      }]);
     }
 
     if (numbersWordList.length < 20) {
@@ -149,40 +150,41 @@ const Sprint = ({ userData }: IProps) => {
       if (timerId) {
         clearTimeout(timerId);
       }
-    };
-  }
+    }
+  };
 
-  useKey('ArrowLeft', () => onSelectByKey('right'));
-  useKey('ArrowRight', () => onSelectByKey('wrong'));
+  useKey("ArrowLeft", () => onSelectByKey("right"));
+  useKey("ArrowRight", () => onSelectByKey("wrong"));
 
   const addUserWord = (answer: string) => {
     if (userData && dataWords) {
       getWord(userData?.userId, String(dataWords[numberCurrentWord].id), userData?.token)
         .then((res) => {
           changeWord(userData?.userId, String(dataWords[numberCurrentWord].id), {
-            difficulty: difficulty,
+            difficulty,
             optional: {
-              ...res.data.optional, largestSeriesCorAnswS: `${largestSeriesCorAnsw}`,
+              ...res.data.optional,
+              largestSeriesCorAnswS: `${largestSeriesCorAnsw}`,
               game: {
-                ...res.data.optional.game, sprint: answer
-              }
-            }
-          }, userData?.token)
+                ...res.data.optional.game, sprint: answer,
+              },
+            },
+          }, userData?.token);
         })
         .catch((error) => {
           if (Number(error.message.slice(-3)) === 404) {
             setWordToDictionary(userData?.userId, String(dataWords[numberCurrentWord].id), {
-              difficulty: difficulty,
+              difficulty,
               optional: {
                 game: {
-                  sprint: answer                 
+                  sprint: answer,
                 },
-                largestSeriesCorAnswS: `${largestSeriesCorAnsw}`
-              }
-            }, userData?.token)
-          };
+                largestSeriesCorAnswS: `${largestSeriesCorAnsw}`,
+              },
+            }, userData?.token);
+          }
         });
-    };
+    }
     setIsLoading(false);
   };
 
@@ -191,7 +193,7 @@ const Sprint = ({ userData }: IProps) => {
       getUserWords(userData?.userId, userData?.token)
         .then((res) => setUserWordsList(res.data))
         .catch((error) => console.log(error));
-    };
+    }
   };
 
   const PageSprint = () => {
@@ -209,20 +211,20 @@ const Sprint = ({ userData }: IProps) => {
               </Typography>
             </CardContent>
             <CardActions>
-            <Button data-name="right" onClick={onSelect}>
+              <Button data-name="right" onClick={onSelect}>
                 <ArrowBackIcon />
                 Right
-                </Button>
-                <Button data-name="wrong" onClick={onSelect}>
+              </Button>
+              <Button data-name="wrong" onClick={onSelect}>
                 Wrong
                 <ArrowForwardIcon />
-                </Button>
+              </Button>
             </CardActions>
           </div>
         </Card>
-      )
-    } else return null;
-  }
+      );
+    } return null;
+  };
 
   const start = !isStart ? <Start onStart={onStart} /> : null;
   const pageGame = !(isLoading || !dataWords) ? <PageSprint /> : null;
