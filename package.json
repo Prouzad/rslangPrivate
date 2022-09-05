@@ -2,7 +2,7 @@
   "name": "rslang2022q1",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://Prouzad.github.io/",
+  "homepage": "http://Prouzad.github.io/rslangPrivate",
   "dependencies": {
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
