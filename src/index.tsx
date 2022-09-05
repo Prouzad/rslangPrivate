@@ -8,7 +8,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
 	<React.StrictMode>
-		<BrowserRouter>
+		<BrowserRouter  basename="/rslangPrivate">
 			<App />
 		</BrowserRouter>
 	</React.StrictMode>
