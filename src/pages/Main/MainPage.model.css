@@ -154,43 +154,6 @@
 	font-size: 14px;
 }
 
-footer{
-	width: 100%;
-	height: 80px;
-
-	display: flex;
-	justify-content: flex-end;
-	box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-
-}
-
-.footerContainer{
-	width: 100%;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-}
-
-.logoRs{
-	height: 45px;
-}
-
-.logoRs img{
-	height: 100%;
-}
-
-.githubLinks{
-	width: 25%;
-	height: 50px;
-	display: flex;
-	justify-content: space-evenly;
-}
-
-.githubLinks img{
-	height: 100%;
-	margin-right: 45px;
-}
-
 @media (max-width: 800px) {
 	
 	.mainContainer{
