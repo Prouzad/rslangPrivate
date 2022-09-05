@@ -122,7 +122,6 @@ const CardWord = ({ card, user, diff, learned}: Props) => {
 						handleChange()
 						}}
           >
-            Difficult 
           </Button>
           : null
         }

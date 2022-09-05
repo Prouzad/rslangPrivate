@@ -208,50 +208,53 @@ function AudioCall({ userData }: IProps) {
   const PageAudioCall = () => {
     if (dataWords) {
       return (
-        <div>
-          <CardContent>
-            <IconButton
-              size="large"
-              sx={{
-                width: 100,
-                height: 100,
-                color: '#ffffff',
-                marginBottom: '60px'
-              }}
-              onClick={playAudio}>
-              <VolumeUpOutlinedIcon fontSize='large' sx={{ width: 60, height: 60 }} />
-            </IconButton>
-            <ul>
-              {arrAnswers.map((item, i) => {
-                return <li key={i}>
-                  <Button
-                    data-number={item}
-                    ref={(el) => {
-                      return el ? itemRefs.current[item] = el : null
-                    }}
-                    variant="text"
-                    onClick={(event) => { onSelect(event); onHidden(true) }}
-                  >
-                    {++i} {dataWords[item].wordTranslate}
-                  </Button>
-                </li>
-              })}
-            </ul>
-          </CardContent>
-          <CardActions>
-            <Button
-              variant='contained'
-              style={{ display: !togglerDisplayButtons ? 'flex' : 'none' }}
-              onClick={() => { onDiscover(); onHidden(true); inCor() }}>I don't know</Button>
-            <Button
-              variant='contained'
-              style={{ display: togglerDisplayButtons ? 'flex' : 'none' }}
-              onClick={() => { onNext(); onHidden(false); }}
-            >
-              <ArrowRightAltIcon fontSize='medium' />
-            </Button>
-          </CardActions>
-        </div >
+        <div className={s.cardWrapper}>
+          <div className={`${s.card}   ${s.cardSprint}`}>
+            <CardContent className={s.contentCardVolume}>
+              <IconButton
+                size="large"
+                sx={{
+                  width: 100,
+                  height: 100,
+                  color: '#31597A',
+                }}
+                onClick={playAudio}>
+                <VolumeUpOutlinedIcon fontSize='large' sx={{ width: 60, height: 60 }} />
+              </IconButton>
+              <ul>
+                {arrAnswers.map((item, i) => {
+                  return <li key={i}>
+                    <Button
+                      data-number={item}
+                      ref={(el) => {
+                        return el ? itemRefs.current[item] = el : null
+                      }}
+                      variant="text"
+                      onClick={(event) => { onSelect(event); onHidden(true) }}
+                    >
+                      {++i} {dataWords[item].wordTranslate}
+                    </Button>
+                  </li>
+                })}
+              </ul>
+            </CardContent>
+            <CardActions  sx={{
+                  marginBottom: "20px",
+                }}>
+              <Button
+                variant='contained'
+                style={{ display: !togglerDisplayButtons ? 'flex' : 'none' }}
+                onClick={() => { onDiscover(); onHidden(true); inCor() }}>I don't know</Button>
+              <Button
+                variant='contained'
+                style={{ display: togglerDisplayButtons ? 'flex' : 'none' }}
+                onClick={() => { onNext(); onHidden(false); }}
+              >
+                <ArrowRightAltIcon fontSize='medium' />
+              </Button>
+            </CardActions>
+          </div >
+        </div>
       )
     } else return null;
   }
@@ -264,12 +267,12 @@ function AudioCall({ userData }: IProps) {
       difficulty={difficulty}
       dataWords={dataWords} /> : null;
   return (
-    <div className={s.contentGames}>
+    <>
       {start}
       {pageGame}
       {result}
-    </div>
-  )
+    </>
+  );
 }
 
 export default AudioCall

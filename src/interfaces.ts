@@ -67,6 +67,7 @@ export interface IUserInfo {
 
 export interface IProps {
   userData?: IUserInfo;
+  setUserData?: any;
 } 
 
 export type PageSettingsProps = {

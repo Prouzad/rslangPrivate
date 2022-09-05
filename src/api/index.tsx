@@ -4,32 +4,30 @@ import { createUserType } from './api.model'
 
 export const baseURL = "https://rs-langs.herokuapp.com/";
 
-export const createUser = async (user: createUserType) => {
-  const rawResponse = await fetch(`${baseURL}users`, {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
+export async function createUser (user: createUserType) {
+  return await axios.post(
+    `${baseURL}users`,
+    user,
+    { 
+      headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      },
     },
-    body: JSON.stringify(user)
-  });
-  const content = await rawResponse.json();
-
-  console.log(content);
+  )
 };
 
-export const loginUser = async (user: createUserType) => {
-  const rawResponse = await fetch(`${baseURL}signin`, {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
+export async function loginUser (user: createUserType) {
+  return await axios.post(
+    `${baseURL}signin`,
+    user,
+    { 
+      headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      },
     },
-    body: JSON.stringify(user)
-  });
-  const content = await rawResponse.json();
-
-  console.log(content);
+  )
 };
 
 
@@ -39,6 +37,14 @@ export const getLocalStorage = () => {
   }
 };
 
+
+export const removeLocalStorage = (user: string) => {
+  localStorage.removeItem(user)
+};
+
+export const setLocalStorage = (user: string) => {
+  localStorage.setItem('userData', user)
+};
 
 export async function getWords(activePage: number, groupNum: number) {
   return await axios.get(
@@ -124,13 +130,13 @@ export async function ChangeUserWords(
 
 export async function getWord(userId: string, wordId: string, token: string) {
   const response = axios.get(`${baseURL}users/${userId}/words/${wordId}`, {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-    })
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  })
   return await response;
 }
 

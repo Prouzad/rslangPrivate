@@ -30,8 +30,7 @@ const Dictionary = ({ userData }: IProps) => {
 		setDiff(newValue)
 	}
 
-
-  useEffect(() => {
+	useEffect(() => {
     async function fetchAllWords() {
       const wordsArr = await getWords(page - 1, group);
       setAllWords(wordsArr.data);
