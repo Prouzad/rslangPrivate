@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/rslangPrivate/static/css/main.1f6d59a4.css",
-    "main.js": "/rslangPrivate/static/js/main.2568472d.js",
-    "static/js/845.a566a101.chunk.js": "/rslangPrivate/static/js/845.a566a101.chunk.js",
-    "static/media/textbook.png": "/rslangPrivate/static/media/textbook.556906ba4d1d50811571.png",
-    "static/media/incorrect.mp3": "/rslangPrivate/static/media/incorrect.8da2396058e95c498930.mp3",
-    "static/media/prouzad.png": "/rslangPrivate/static/media/prouzad.485e0c6686e859cb77b0.png",
-    "static/media/aiscode.png": "/rslangPrivate/static/media/aiscode.f64470c20067d94fba79.png",
-    "static/media/correct.mp3": "/rslangPrivate/static/media/correct.64347e4528cd1b351c36.mp3",
-    "static/media/dictionary.png": "/rslangPrivate/static/media/dictionary.213547803a5509b14fdf.png",
-    "static/media/statistics.png": "/rslangPrivate/static/media/statistics.fbea57f976efb69e97ab.png",
-    "static/media/mainImage.png": "/rslangPrivate/static/media/mainImage.e9a5180fc5c78b988c5d.png",
-    "static/media/avatar.png": "/rslangPrivate/static/media/avatar.6c53c0a1c12e6d7eaa36.png",
-    "static/media/audioGame.svg": "/rslangPrivate/static/media/audioGame.836c737256ce33af3861d080aa755afc.svg",
-    "static/media/rs_school_js.svg": "/rslangPrivate/static/media/rs_school_js.ad178c0df28bc133be34b982d62f431d.svg",
-    "static/media/sprintGame.svg": "/rslangPrivate/static/media/sprintGame.79d3b45c055914a38eb25ca085af3dd1.svg",
-    "index.html": "/rslangPrivate/index.html",
-    "main.1f6d59a4.css.map": "/rslangPrivate/static/css/main.1f6d59a4.css.map",
-    "main.2568472d.js.map": "/rslangPrivate/static/js/main.2568472d.js.map",
-    "845.a566a101.chunk.js.map": "/rslangPrivate/static/js/845.a566a101.chunk.js.map"
+    "main.css": "/static/css/main.1f6d59a4.css",
+    "main.js": "/static/js/main.d499c549.js",
+    "static/js/845.a566a101.chunk.js": "/static/js/845.a566a101.chunk.js",
+    "static/media/textbook.png": "/static/media/textbook.556906ba4d1d50811571.png",
+    "static/media/incorrect.mp3": "/static/media/incorrect.8da2396058e95c498930.mp3",
+    "static/media/prouzad.png": "/static/media/prouzad.485e0c6686e859cb77b0.png",
+    "static/media/aiscode.png": "/static/media/aiscode.f64470c20067d94fba79.png",
+    "static/media/correct.mp3": "/static/media/correct.64347e4528cd1b351c36.mp3",
+    "static/media/dictionary.png": "/static/media/dictionary.213547803a5509b14fdf.png",
+    "static/media/statistics.png": "/static/media/statistics.fbea57f976efb69e97ab.png",
+    "static/media/mainImage.png": "/static/media/mainImage.e9a5180fc5c78b988c5d.png",
+    "static/media/avatar.png": "/static/media/avatar.6c53c0a1c12e6d7eaa36.png",
+    "static/media/audioGame.svg": "/static/media/audioGame.836c737256ce33af3861d080aa755afc.svg",
+    "static/media/rs_school_js.svg": "/static/media/rs_school_js.ad178c0df28bc133be34b982d62f431d.svg",
+    "static/media/sprintGame.svg": "/static/media/sprintGame.79d3b45c055914a38eb25ca085af3dd1.svg",
+    "index.html": "/index.html",
+    "main.1f6d59a4.css.map": "/static/css/main.1f6d59a4.css.map",
+    "main.d499c549.js.map": "/static/js/main.d499c549.js.map",
+    "845.a566a101.chunk.js.map": "/static/js/845.a566a101.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1f6d59a4.css",
-    "static/js/main.2568472d.js"
+    "static/js/main.d499c549.js"
   ]
 }
