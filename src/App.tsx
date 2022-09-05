@@ -34,14 +34,14 @@ const App = () => {
 					<Navbar  />
 			</ContextLogin.Provider>
 			<Routes>
-				<Route path='/rslangPrivate/' element={<MainPage userData={userData} />} />
-				<Route path='/rslangPrivate/main' element={<MainPage userData={userData} />} />
-				<Route path='/rslangPrivate/textbook' element={<Textbook userData={userData} />} />
-				<Route path='/rslangPrivate/games' element={<Games />} />
-				<Route path='/rslangPrivate/statistics' element={<Statistics />} />
-				<Route path="/rslangPrivate/dictionary" element={<Dictionary userData={userData} />} />
-				<Route path="/rslangPrivate/sprint" element={<Sprint userData={userData} />} />
-				<Route path="/rslangPrivate/audio-call" element={<AudioCall userData={userData} />} />
+				<Route path='/' element={<MainPage userData={userData} />} />
+				<Route path='/main' element={<MainPage userData={userData} />} />
+				<Route path='/textbook' element={<Textbook userData={userData} />} />
+				<Route path='/games' element={<Games />} />
+				<Route path='/statistics' element={<Statistics />} />
+				<Route path="/dictionary" element={<Dictionary userData={userData} />} />
+				<Route path="/sprint" element={<Sprint userData={userData} />} />
+				<Route path="/audio-call" element={<AudioCall userData={userData} />} />
 			</Routes>
 		</>
 	);

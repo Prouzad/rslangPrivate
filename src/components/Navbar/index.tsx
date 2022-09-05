@@ -137,13 +137,13 @@ export default function Navbar() {
 							<List>
 								{['Main', 'Textbook', 'Games', 'Statistics'].map(
 									(text, index) => (
-										<Link to={`rslangPrivate/${text.toLowerCase()}`} key={index}>
+										<Link to={'/'+text.toLowerCase()} key={index}>
 											<NavCard open={open} renderSwitch={renderSwitch(text)} text={text} />
 										</Link>
 									)
 								)}
 								{userData ?
-									<Link to='rslangPrivate/dictionary'>
+									<Link to='/dictionary'>
 										<NavCard open={open} renderSwitch={<BookIcon style={{ color: 'white' }} />} text='Dictionary' />
 									</Link>
 									: null
