@@ -18,7 +18,9 @@ import LoginPage from '../Authorization/LoginPage';
 import { IProps } from '../../interfaces';
 import NavCard from './navCard';
 import { Link } from 'react-router-dom';
-import { removeLocalStorage } from '../../api';
+import { removeLocalStorage,getLocalStorage } from '../../api';
+import {ContextLogin} from '../../App'
+import { useContext} from "react";
 
 const drawerWidth = 240;
 
@@ -75,10 +77,11 @@ const Drawer = styled(MuiDrawer, {
 	}),
 }));
 
-export default function Navbar({ userData }: IProps) {
+export default function Navbar() {
 	const theme = useTheme();
 	const [open, setOpen] = React.useState(false);
 	const [showSignIn, setShowSignIn] = React.useState(false);
+	const [userData, setUserData] = useContext(ContextLogin);
 
 	const handleDrawerOpen = () => {
 		setOpen(false);
@@ -159,6 +162,7 @@ export default function Navbar({ userData }: IProps) {
 									:
 									<div onClick={() => {
 										removeLocalStorage('userData')
+										setUserData(getLocalStorage())
 									}}>
 										<NavCard open={open} renderSwitch={<LoginIcon style={{ color: 'white' }} />} text='Log out' />
 									</div>

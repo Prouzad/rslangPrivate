@@ -6,9 +6,9 @@ import {
   Alert,
   AlertTitle,
 } from "@mui/material";
-import { useRef, useState, useEffect } from "react";
-import { useLocalStorage } from '../../../hooks/useLocalStorage'
-import axios from "../../../api/axios";
+import { useContext, useRef, useState, useEffect } from "react";
+import {loginUser, setLocalStorage} from "../../../api/index";
+import {ContextLogin} from '../../../App'
 
 const LogIn = () => {
   const errRef = useRef();
@@ -16,7 +16,7 @@ const LogIn = () => {
   const [pwd, setPwd] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState(false);
-  const [userData, setUserData] = useLocalStorage([], 'userData')
+  const [userData, setUserData] = useContext(ContextLogin);
 
   useEffect(() => {
     setErrMsg('')
@@ -25,14 +25,8 @@ const LogIn = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "/signin",
-        JSON.stringify({
-          email: mail,
-          password: pwd,
-        }),
-      );
-      console.dir(response.data);
+      const response = await loginUser({ email: mail, password: pwd})
+      setLocalStorage(JSON.stringify(response.data))
       setSuccessMsg(true);
       setUserData(response.data)
     } catch (err: any) {
@@ -72,7 +66,7 @@ const LogIn = () => {
               fontWeight: "400",
             }}
           >
-            Добро пожаловать!
+            Welcome!
           </Typography>
         </Box>
       ) : (
@@ -96,7 +90,7 @@ const LogIn = () => {
               required
               name="email"
               id="email-input"
-              label="Ваш email"
+              label="Your email"
               type="text"
               margin="normal"
               autoComplete="off"
@@ -108,7 +102,7 @@ const LogIn = () => {
               required
               name="password"
               id="outlined-password-input"
-              label="Пароль"
+              label="Password"
               type="password"
               autoComplete="off"
               margin="normal"

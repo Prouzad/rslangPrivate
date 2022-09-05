@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { getLocalStorage } from './api';
 import Navbar from './components/Navbar';
@@ -10,6 +10,8 @@ import Sprint from './pages/Games/Sprint';
 import MainPage from './pages/Main/MainPage';
 import Statistics from './pages/Statistics';
 import Textbook from './pages/Textbook';
+
+export const ContextLogin = createContext<any>(null);
 
 const App = () => {
 	const [userData, setUserData] = useState<IUserInfo | undefined>()
@@ -28,7 +30,9 @@ const App = () => {
 
 	return (
 		<>
-			<Navbar userData={userData} setUserData={setUserData}/>
+			<ContextLogin.Provider value={[userData, setUserData]}>
+					<Navbar  />
+			</ContextLogin.Provider>
 			<Routes>
 				<Route path='/' element={<MainPage userData={userData} />} />
 				<Route path='/main' element={<MainPage userData={userData} />} />
