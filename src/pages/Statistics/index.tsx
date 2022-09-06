@@ -123,6 +123,7 @@ function Statistics({ userData }: IProps) {
             borderRadius: 20,
           }]
         }}
+        
       >
       </Bar>
       <h3>AudioCall</h3>
