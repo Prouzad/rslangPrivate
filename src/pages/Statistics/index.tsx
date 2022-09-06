@@ -117,7 +117,7 @@ function Statistics({ userData }: IProps) {
             borderRadius: 20,
           },
           {
-            label: 'number of correct answers',
+            label: 'the largest series of correct answers',
             data: [largestSeriesCorAnswSprint],
             backgroundColor: 'rgb(164, 215, 254)',
             borderRadius: 20,
@@ -143,7 +143,7 @@ function Statistics({ userData }: IProps) {
             borderRadius: 20,
           },
           {
-            label: 'number of correct answers',
+            label: 'the largest series of correct answers',
             data: [largestSeriesAudioCall],
             backgroundColor: 'rgb(164, 215, 254)',
             borderRadius: 20,
