@@ -119,6 +119,7 @@ function MainPage({ userData }: IProps) {
                 </div>
               </Link>
             )
+            
             : null}
         </div>
         <div className="teamBox">
