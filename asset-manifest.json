@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/rslangPrivate/static/css/main.b5c7e904.css",
-    "main.js": "/rslangPrivate/static/js/main.85b80f7b.js",
+    "main.js": "/rslangPrivate/static/js/main.e0eba86e.js",
     "static/js/845.a566a101.chunk.js": "/rslangPrivate/static/js/845.a566a101.chunk.js",
     "static/media/textbook.png": "/rslangPrivate/static/media/textbook.556906ba4d1d50811571.png",
     "static/media/incorrect.mp3": "/rslangPrivate/static/media/incorrect.8da2396058e95c498930.mp3",
@@ -17,11 +17,11 @@
     "static/media/sprintGame.svg": "/rslangPrivate/static/media/sprintGame.79d3b45c055914a38eb25ca085af3dd1.svg",
     "index.html": "/rslangPrivate/index.html",
     "main.b5c7e904.css.map": "/rslangPrivate/static/css/main.b5c7e904.css.map",
-    "main.85b80f7b.js.map": "/rslangPrivate/static/js/main.85b80f7b.js.map",
+    "main.e0eba86e.js.map": "/rslangPrivate/static/js/main.e0eba86e.js.map",
     "845.a566a101.chunk.js.map": "/rslangPrivate/static/js/845.a566a101.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b5c7e904.css",
-    "static/js/main.85b80f7b.js"
+    "static/js/main.e0eba86e.js"
   ]
 }
