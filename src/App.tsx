@@ -38,7 +38,7 @@ const App = () => {
 				<Route path='/main' element={<MainPage userData={userData} />} />
 				<Route path='/textbook' element={<Textbook userData={userData} />} />
 				<Route path='/games' element={<Games />} />
-				<Route path='/statistics' element={<Statistics />} />
+				<Route path='/statistics' element={<Statistics userData={userData} />} />
 				<Route path="/dictionary" element={<Dictionary userData={userData} />} />
 				<Route path="/sprint" element={<Sprint userData={userData} />} />
 				<Route path="/audio-call" element={<AudioCall userData={userData} />} />
