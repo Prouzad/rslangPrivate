@@ -45,10 +45,13 @@ const Textbook = ({ userData }: IProps) => {
 
 	const difficultArr = userWords.filter(item => item.difficulty === 'Hard')
 	const learnedArr = userWords.filter(item => item.difficulty === 'Learned')
-
+	const allArr = words.filter(item => [...difficultArr, ...learnedArr].some(item2 => item.id === item2.wordId))
+	console.log(allArr, words)
   return (
     <>
-    <div className={s.contentBook}>
+    <Box className={s.contentBook} sx={{
+      background: `${[...difficultArr, ...learnedArr].length === words.length ? 'green' : 'white'}`,
+    }}>
       <Box
         sx={{
           display: "flex",
@@ -141,7 +144,7 @@ const Textbook = ({ userData }: IProps) => {
           })}
         </Box>
       </Box>
-    </div>
+    </Box>
     <Footer />
     </>
   );

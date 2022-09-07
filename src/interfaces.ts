@@ -22,9 +22,7 @@ export interface IUserWord {
   difficulty: string | boolean;
   wordId: string;
   optional: {
-		counter?: {
-			counterSuccess?: string,
-		},
+		counter?: number,
     game?: {
       sprint?: string;
       audioCall?: string;
@@ -43,9 +41,7 @@ export interface IPageResultProps {
 export interface IWordType {
   difficulty: string;
   optional: {
-		counter?: {
-			counterSuccess?: string,
-		},
+		counter?: number,
     game?: {
       sprint?: string;
       audioCall?: string;
