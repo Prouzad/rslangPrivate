@@ -2,7 +2,7 @@ import { Button, Card, CardContent, CardMedia, Typography } from "@mui/material"
 import { Box } from "@mui/system";
 import { IUserInfo, IWordCard } from "../../interfaces";
 import VolumeDownIcon from "@mui/icons-material/VolumeDown";
-import { baseURL, ChangeUserWords, setWordToDictionary } from "../../api";
+import { baseURL, ChangeUserWords, getWord, setWordToDictionary } from "../../api";
 import s from "./Textbook.module.css";
 import { useEffect, useState } from "react";
 interface Props {
@@ -32,18 +32,17 @@ const CardWord = ({ card, user, diff, learned}: Props) => {
 	}, [diff, learned])
 
 	const handleChange = () => {
-		setIsDiff(true)
+		setIsDiff(!IsDiff)
 		console.log(IsDiff)
 	}
 	const handleLearnedChange = () => {
-		setIsLearned(true)
+		setIsLearned(!IsLearned)
 		console.log(IsDiff)
 	}
 
 	return (
-    !IsLearned
-		? <Card  className={s.cardBox} sx={{
-			background: `${IsDiff ? "rgba(232, 144, 144, 0.4)" : "#fdfeff"}`
+		 <Card  className={s.cardBox} sx={{
+			background: `${IsDiff ? "rgba(232, 144, 144, 0.4)" : IsLearned ? "rgb(205, 240, 234, 0.4)" : "#fff"}`
 		}}>
       <CardContent>
       <CardMedia component="img" alt="XX" height="180" image={imgSrc} sx={{marginBottom: 5,}} />
@@ -107,22 +106,48 @@ const CardWord = ({ card, user, diff, learned}: Props) => {
 					justifyContent: 'space-evenly',
 				}}
 			>
-			{user && !IsDiff ?
+			{user  ?
           <Button
             variant="contained"
 						sx={{ marginTop: 2, background: "orange" }}
 						className={s.cardBtn}
-            onClick={() => {setWordToDictionary(user.userId, card.id,
-              {
-                "difficulty": `Hard`,
-                "optional": {}
-              },
-              user.token
-            )
+            onClick={() => {
+							getWord(user?.userId, String(card.id), user?.token)
+							.then(() => {
+								if(!IsDiff){
+									ChangeUserWords(user.userId, card.id,
+										{
+											"difficulty": `Hard`,
+											"optional": {}
+										},
+										user.token
+									) 
+									setIsLearned(false)
+								}else{
+									ChangeUserWords(user.userId, card.id,
+										{
+											"difficulty": `Normal`,
+											"optional": {}
+										},
+										user.token
+									)
+								}
+								
+							})
+							.catch(() => {
+								setWordToDictionary(user.userId, card.id,
+									{
+										"difficulty": `Hard`,
+										"optional": {}
+									},
+									user.token
+								) 
+							})
+							
 						handleChange()
 						}}
           >
-						Difficult 
+						{!IsDiff ? "Difficult" : "Normal" }
           </Button>
           : null
         }
@@ -132,24 +157,43 @@ const CardWord = ({ card, user, diff, learned}: Props) => {
 					sx={{ marginTop: 2, background: "orange" }}
 					className={s.cardBtn}
 					onClick={() => {
-						!IsDiff ? setWordToDictionary(user.userId, card.id,
-              {
-                "difficulty": `Learned`,
-                "optional": {}
-              },
-              user.token
-            ) 
-						: ChangeUserWords(user.userId, card.id,
-              {
-                "difficulty": `Learned`,
-                "optional": {}
-              },
-              user.token
-            )
+						getWord(user?.userId, String(card.id), user?.token)
+							.then(() => {
+								if(!IsLearned){
+									ChangeUserWords(user.userId, card.id,
+										{
+											"difficulty": `Learned`,
+											"optional": {}
+										},
+										user.token
+									) 
+									setIsDiff(false)
+								}else{
+									ChangeUserWords(user.userId, card.id,
+										{
+											"difficulty": `Normal`,
+											"optional": {}
+										},
+										user.token
+									)
+								}
+								
+
+							})
+							.catch(() => {
+								 setWordToDictionary(user.userId, card.id,
+									{
+										"difficulty": `Learned`,
+										"optional": {}
+									},
+									user.token
+								) 
+							})
+						
 						handleLearnedChange()
 					}}
 				>
-					Learned
+					{IsLearned ? "Unlearned " : "Learned"}
 				</Button>
 				: null
 			}
@@ -157,7 +201,6 @@ const CardWord = ({ card, user, diff, learned}: Props) => {
 		
     </Card>
 
-		: null
   );
 };
 

@@ -31,6 +31,8 @@ const Sprint = ({ userData }: IProps) => {
   const [userWordsList, setUserWordsList] = useState<IUserWord[]>([]);
   const [timerId, setTimerId] = useState<NodeJS.Timeout | null>(null);
   const [largestSeriesCorAnsw, setLargestSeriesCorAnsw] = useState<number>(0);
+  const [Counter, setCounter] = useState<string>("15");
+
 
   const correct = require("../../../assets/sounds/correct.mp3");
   const incorrect = require("../../../assets/sounds/incorrect.mp3");
@@ -160,9 +162,13 @@ const Sprint = ({ userData }: IProps) => {
     if (userData && dataWords) {
       getWord(userData?.userId, String(dataWords[numberCurrentWord].id), userData?.token)
         .then((res) => {
+					
           changeWord(userData?.userId, String(dataWords[numberCurrentWord].id), {
-            difficulty,
+            difficulty: 'Learned',
             optional: {
+							counter: {
+								counterSuccess: "54",
+							},
               ...res.data.optional,
               largestSeriesCorAnswS: `${largestSeriesCorAnsw}`,
               game: {
@@ -176,6 +182,9 @@ const Sprint = ({ userData }: IProps) => {
             setWordToDictionary(userData?.userId, String(dataWords[numberCurrentWord].id), {
               difficulty,
               optional: {
+								counter: {
+									counterSuccess: "12",
+								},
                 game: {
                   sprint: answer,
                 },
