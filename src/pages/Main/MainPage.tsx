@@ -4,11 +4,11 @@ import Button from "@mui/material/Button";
 import mainImage from "../../assets/img/mainImage.png";
 import Prouzad from "../../assets/img/prouzad.png";
 import aiscode from "../../assets/img/aiscode.png";
+import botino from "../../assets/img/botino-k.png";
 import TextBookImg from "../../assets/icon/textbook.png";
 import DictionaryImg from "../../assets/icon/dictionary.png";
 import GameImg from "../../assets/icon/game.jpg";
 import StatisticsImg from "../../assets/icon/statistics.png";
-import AvatarImg from "../../assets/icon/avatar.png";
 import Footer from "../footer/index";
 import { IProps } from "../../interfaces";
 
@@ -39,7 +39,7 @@ const teamInfo = [
     descripction:
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate, aliquid odio asperiores assumenda velit quisquam maxime illo? In porro tenetur maiores ducimus fugit obcaecati dolore ex, iusto neque et!",
     title: "Frontend developer",
-    link: "/",
+    link: "https://github.com/Prouzad",
     image: Prouzad,
   },
   {
@@ -47,7 +47,7 @@ const teamInfo = [
     descripction:
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate, aliquid odio asperiores assumenda velit quisquam maxime illo? In porro tenetur maiores ducimus fugit obcaecati dolore ex, iusto neque et!",
     title: "Frontend developer",
-    link: "/",
+    link: "https://github.com/aiscodes",
     image: aiscode,
   },
   {
@@ -55,8 +55,8 @@ const teamInfo = [
     descripction:
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate, aliquid odio asperiores assumenda velit quisquam maxime illo? In porro tenetur maiores ducimus fugit obcaecati dolore ex, iusto neque et!",
     title: "Frontend developer",
-    link: "/",
-    image: AvatarImg,
+    link: "https://github.com/botino-k",
+    image: botino,
   },
 ];
 
@@ -125,7 +125,7 @@ function MainPage({ userData }: IProps) {
         <div className="teamBox">
           <h2>Our Team</h2>
           {teamInfo.map((item) => (
-            <Link to={item.link} className="advantagesLink">
+            <a href={item.link} className="advantagesLink">
               <div className="CardBox">
                 <div className="avatar">
                   <img src={item.image} alt="Avatar" />
@@ -136,7 +136,7 @@ function MainPage({ userData }: IProps) {
                   <div className="descPerson">{item.descripction}</div>
                 </div>
               </div>
-            </Link>
+            </a>
           ))}
         </div>
       </div>
