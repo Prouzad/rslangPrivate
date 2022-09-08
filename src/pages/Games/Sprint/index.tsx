@@ -162,8 +162,8 @@ const Sprint = ({ userData }: IProps) => {
     if (userData && dataWords) {
       getWord(userData?.userId, String(dataWords[numberCurrentWord].id), userData?.token)
         .then((res) => {
-					const garbage = {
-            difficulty: 'Learned',
+					const reqBodyTrue = {
+            difficulty: `${res.data.optional.counter > 2 ? 'Learned' : res.data.difficulty}`,
             optional: {
 							game: {
 								...res.data.optional.game, sprint: answer,
@@ -173,16 +173,27 @@ const Sprint = ({ userData }: IProps) => {
 							counter: 1 + res.data.optional.counter
             },
           }
-					console.log(largestSeriesCorAnsw)
-					console.dir(garbage, {depth: null})
-          changeWord(userData?.userId, String(dataWords[numberCurrentWord].id), garbage, userData?.token);
+
+					const reqBodyFalse = {
+            difficulty: `${res.data.difficulty === 'Learned' ? 'Normal' : res.data.difficulty}`,
+            optional: {
+							game: {
+								...res.data.optional.game, sprint: answer,
+              },
+							...res.data.optional,
+							largestSeriesCorAnswS: `${largestSeriesCorAnsw}`,
+							counter: 0
+            },
+          }
+					
+          changeWord(userData?.userId, String(dataWords[numberCurrentWord].id), (answer === 'true' ? reqBodyTrue : reqBodyFalse), userData?.token);
         })
         .catch((error) => {
           if (Number(error.message.slice(-3)) === 404) {
             setWordToDictionary(userData?.userId, String(dataWords[numberCurrentWord].id), {
               difficulty,
               optional: {
-								counter: 1,
+								counter: 0,
                 game: {
                   sprint: answer,
                 },
