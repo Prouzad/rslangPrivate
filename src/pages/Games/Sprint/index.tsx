@@ -162,29 +162,38 @@ const Sprint = ({ userData }: IProps) => {
     if (userData && dataWords) {
       getWord(userData?.userId, String(dataWords[numberCurrentWord].id), userData?.token)
         .then((res) => {
-					
-          changeWord(userData?.userId, String(dataWords[numberCurrentWord].id), {
-            difficulty: 'Learned',
+					const reqBodyTrue = {
+            difficulty: `${res.data.optional.counter > 2 ? 'Learned' : res.data.difficulty}`,
             optional: {
-							counter: {
-								counterSuccess: "54",
-							},
-              ...res.data.optional,
-              largestSeriesCorAnswS: `${largestSeriesCorAnsw}`,
-              game: {
-                ...res.data.optional.game, sprint: answer,
+							game: {
+								...res.data.optional.game, sprint: answer,
               },
+							...res.data.optional,
+							largestSeriesCorAnswS: `${largestSeriesCorAnsw}`,
+							counter: 1 + res.data.optional.counter
             },
-          }, userData?.token);
+          }
+
+					const reqBodyFalse = {
+            difficulty: `${res.data.difficulty === 'Learned' ? 'Normal' : res.data.difficulty}`,
+            optional: {
+							game: {
+								...res.data.optional.game, sprint: answer,
+              },
+							...res.data.optional,
+							largestSeriesCorAnswS: `${largestSeriesCorAnsw}`,
+							counter: 0
+            },
+          }
+					
+          changeWord(userData?.userId, String(dataWords[numberCurrentWord].id), (answer === 'true' ? reqBodyTrue : reqBodyFalse), userData?.token);
         })
         .catch((error) => {
           if (Number(error.message.slice(-3)) === 404) {
             setWordToDictionary(userData?.userId, String(dataWords[numberCurrentWord].id), {
               difficulty,
               optional: {
-								counter: {
-									counterSuccess: "12",
-								},
+								counter: 0,
                 game: {
                   sprint: answer,
                 },

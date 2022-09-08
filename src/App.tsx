@@ -25,9 +25,6 @@ const App = () => {
 		fetchToken()
 	}, [])
 
-	console.log('USER', userData);
-
-
 	return (
 		<>
 			<ContextLogin.Provider value={[userData, setUserData]}>

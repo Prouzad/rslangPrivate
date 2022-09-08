@@ -55,6 +55,7 @@
     ]
   },
   "devDependencies": {
+    "@types/mime": "^3.0.1",
     "gh-pages": "^4.0.0"
   }
 }

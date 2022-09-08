@@ -54,7 +54,6 @@ const SignUp = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    console.log(user, pwd, mail);
     const userVal = USER_REGEX.test(user);
     const pwdVal = PWD_REGEX.test(pwd);
     const mailVal = MAIL_REGEX.test(mail);

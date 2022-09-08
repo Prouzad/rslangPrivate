@@ -36,24 +36,21 @@ const advantagesArr = [
 const teamInfo = [
   {
     name: "Abdulla Ergashev",
-    descripction:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate, aliquid odio asperiores assumenda velit quisquam maxime illo? In porro tenetur maiores ducimus fugit obcaecati dolore ex, iusto neque et!",
+    descripction: 'Main page, General styles of the project, Route configuration, Learned words',
     title: "Frontend developer",
     link: "https://github.com/Prouzad",
     image: Prouzad,
   },
   {
     name: "Aigerim Temirova",
-    descripction:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate, aliquid odio asperiores assumenda velit quisquam maxime illo? In porro tenetur maiores ducimus fugit obcaecati dolore ex, iusto neque et!",
+    descripction:'Electronic textbook, Mini-games "Audio Call" and "Sprint", Statistics page, Deploy APP',
     title: "Frontend developer",
     link: "https://github.com/aiscodes",
     image: aiscode,
   },
   {
     name: "Maria Gavrilova",
-    descripction:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus voluptate, aliquid odio asperiores assumenda velit quisquam maxime illo? In porro tenetur maiores ducimus fugit obcaecati dolore ex, iusto neque et!",
+    descripction: 'Authorization, Mini-games styles',
     title: "Frontend developer",
     link: "https://github.com/botino-k",
     image: botino,
@@ -98,7 +95,9 @@ function MainPage({ userData }: IProps) {
                 <div className="advantageTitle">
                   <h2>{item.title}</h2>
                 </div>
-                <div className="advantageDesc">{item.descripction}</div>
+                <div className="advantageDesc">
+									{item.descripction}
+								</div>
               </div>
             </Link>
           ))}
@@ -133,7 +132,9 @@ function MainPage({ userData }: IProps) {
                 <div className="about">
                   <div className="name">{item.name}</div>
                   <div className="titlePerson">{item.title}</div>
-                  <div className="descPerson">{item.descripction}</div>
+                  <div className="descPerson">										
+										{item.descripction}
+									</div>
                 </div>
               </div>
             </a>
