@@ -1,0 +1,225 @@
+.mainContainer{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.mainBox, .advantagesBox{
+	max-width: 900px;
+	display: flex;
+	justify-content: space-evenly;
+	align-items:center;
+	margin-bottom: 100px;
+	flex-wrap: wrap;
+	
+}
+
+.advantagesBox{
+	margin-bottom: 0px;
+}
+
+.mainDescription {
+	max-width: 400px;
+
+}
+
+.mainText{
+	margin-bottom: 25px;
+	color:#515c6f;
+}
+
+.mainDescription h1{
+	font-size: 62px;
+	color: #172B4C;
+}
+
+.mainImg img{
+	margin-top: 70px;
+	margin-left: 70px;
+	max-width: 200px;
+}
+
+.titleAdvantages{
+	font-size: 32px;
+	height: 122px;
+	
+}
+
+.advantages{
+	width: 350px;
+	height: 350px;
+	padding: 15px;
+	margin: 40px;
+	border-radius: 15px;
+	display: flex;
+	flex-direction: column;
+	align-items:center;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+	box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+	transition: transform 0.5s;
+}
+
+.advantages:hover{
+	transform: scale(1.1);
+}
+
+.advantageTitle h2{
+	font-weight: 500;
+}
+
+.advantageDesc{
+	text-align: center;
+	font-size: 15px;
+	font-weight: 200;
+}
+
+.advantageLogo img{
+	max-width: 80px;
+}
+
+.advantagesLink{
+	color:black;
+	text-decoration: none;
+}
+
+.videoBox{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 800px;
+	margin-bottom: 70px;
+}
+
+.videoBox h2{
+	margin-bottom: 50px;
+	font-size: 42px;
+}
+
+.CardBox{
+	width: 650px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 25px 15px;
+	border-radius: 15px;
+	box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+	margin-bottom: 55px;
+	transition: transform 0.5s;
+}
+
+.CardBox:hover{
+	transform: scale(1.1);
+}
+
+.teamBox{
+	display: flex;
+	flex-direction: column;
+	align-items:center;
+}
+
+.teamBox h2{
+	font-size: 42px;
+}
+
+.avatar{
+	width: 150px;
+}
+
+.avatar img{
+	width: 100%;
+}
+
+.about{
+	width: 450px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.titlePerson{
+	color: rgb(120, 120, 120);
+}
+
+.name{
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.descPerson{
+	font-size: 14px;
+}
+
+@media (max-width: 800px) {
+	
+	.mainContainer{
+		width: 320px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		margin: auto;
+	}
+
+	.mainBox, .advantagesBox{
+		max-width: 260px;
+		margin-bottom: 50px;
+	}
+	
+	.mainDescription {
+		margin-left: 40px;
+		max-width: 250px;
+		font-size: 13px;
+	}
+
+	.mainDescription h1{
+		font-size: 32px;
+	}
+
+	.mainImg img{
+		margin-top: 30px;
+		margin-left: 30px;
+		max-width: 200px;
+	}
+	
+	.advantages{
+		width: 260px;
+		padding: 15px;
+		margin: 0;
+		margin-left: 50px;
+		margin-bottom: 30px;
+		border-radius: 15px;
+		display: flex;
+		flex-direction: column;
+		align-items:center;
+		justify-content: space-evenly;
+		flex-wrap: wrap;
+		box-shadow: 5 20px 10px rgba(0,0,0,0.4);
+	}
+	
+	.advantageLogo img{
+		max-width: 50px;
+	}
+
+	.advantageTitle h2{
+		font-size: 20px;
+	}
+
+	.advantageDesc{
+		font-size: 13px;
+	}
+	
+	.videoBox{
+		width: 250px;
+		margin-left: 30px;
+	}
+
+	.videoBox h2{
+		margin-bottom: 50px;
+		font-size: 22px;
+	}
+}
